@@ -1,0 +1,1 @@
+//Check username and password, return with wrong password or redirect to staff.html

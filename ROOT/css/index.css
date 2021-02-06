@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Great Vibes";
+    src: url("../fonts/GreatVibes-Regular.ttf");
+}
+
+#heading {
+    font-family: Great vibes;
+    font-size: 120px;
+    text-align: center;
+  }
+
+#heading2 {
+    font-family: Open sans;
+    font-size: 30px;
+    text-align: center;
+  }
+
+#info {
+    font-family: Open sans;
+    font-size: 20px;
+    text-align: center;
+    padding: 0% 10% 0% 10%;
+  }
+
+.login_heading {
+  font-family: Open sans;
+  font-size: 40px;
+  text-align: left;
+  padding: 5% 10% 0% 10%;
+}
+.login {
+  font-family: Open sans;
+  float:left;
+  width: 30%;
+  font-size: 30px;
+  text-align: center;
+  padding: 5% 10% 0% 10%;
+}

@@ -50,11 +50,15 @@ function userDetails(userName) {
     // This is the way to add the details you want from the db into your own data structure.
     // If you want to change the details, then just add or remove items accordingly below.
     userCollect.push(
+        DB.users[userIndex].password,
+        DB.users[userIndex].credentials,
         DB.users[userIndex].user_id,
         DB.users[userIndex].username,
-        DB.users[userIndex].first_name,
-        DB.users[userIndex].last_name,
-        DB.users[userIndex].email,
+
+        //DB.users[userIndex].first_name,
+        //DB.users[userIndex].last_name,
+        //DB.users[userIndex].email,
+        
 
         account
     );

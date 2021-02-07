@@ -22,7 +22,7 @@
     padding: 0% 10% 0% 10%;
   }
 
-.login_heading {
+#login_heading {
   font-family: Open sans;
   font-size: 40px;
   text-align: left;
@@ -31,8 +31,20 @@
 .login {
   font-family: Open sans;
   float:left;
-  width: 30%;
+  width: 23%;
   font-size: 30px;
   text-align: center;
-  padding: 5% 10% 0% 10%;
+  padding: 5% 5% 0% 5%;
+}
+
+.button {
+  background: #0080b3; /* Green */
+  border: none;
+  border-radius: 40px;
+  color: white;
+  padding: 50px 40px;
+  text-align: center;
+  text-decoration:wavy;
+  display: inline-block;
+  font-size: 40px;
 }

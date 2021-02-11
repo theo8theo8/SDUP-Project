@@ -11,7 +11,8 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'login_heading', 'customers', 'staff', 'username_label', 'password_label', 'username_label2', 'password_label2', 'login', 'guest_order', 'submit', 'submit2'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds'],       // keys for strings
+    'placeholders' : ['username_label', 'password_label'],
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
                                     // handled in a special way.
@@ -24,31 +25,27 @@ dict = {
     'en': {
         'heading2': "Small local bar with a maritime theme",
         'info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa ipsum, varius in dapibus id, iaculis nec libero. Integer non velit ipsum. Pellentesque aliquet, tortor eu aliquam pharetra, dolor ante porttitor diam, in eleifend nisl sem eget massa. Integer eu iaculis tortor. Donec efficitur cursus turpis sit amet efficitur. Cras convallis libero ipsum. Cras at iaculis justo. Morbi suscipit viverra rutrum. Sed id consectetur nulla, ac interdum diam. Nullam efficitur sit amet odio ac consequat. Ut eget ex sed erat facilisis maximus non ultrices neque.",
-        'customers': "Customers",
-        'staff': "Staff",
+        'customers': "Login",
+        'inlog' : "Staff & Patrons",  
         'pic1' : "img/uk.png",
-        'username_label' : "Username:",
-        'password_label' : "Password:", 
-        'username_label2' : "Username:",
-        'password_label2' : "Password:", 
-        'guest_order' : "Order as guest",
-        'submit' : "Submit",
-        'submit2' : "Submit"
+        'username_label' : "Username",
+        'password_label' : "Password",
+        'guest_order' : "Order at your table",
+        'submit' : "Log in", 
+        'wrong_creds': "Wrong password or username"
 
     },
     'sv' : {
         'heading2' : "Liten lokal bar med båttema",
         'info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa ipsum, varius in dapibus id, iaculis nec libero. Integer non velit ipsum. Pellentesque aliquet, tortor eu aliquam pharetra, dolor ante porttitor diam, in eleifend nisl sem eget massa. Integer eu iaculis tortor. Donec efficitur cursus turpis sit amet efficitur. Cras convallis libero ipsum. Cras at iaculis justo. Morbi suscipit viverra rutrum. Sed id consectetur nulla, ac interdum diam. Nullam efficitur sit amet odio ac consequat. Ut eget ex sed erat facilisis maximus non ultrices neque.",
-        'customers': "Kunder",
-        'staff': "Personal",
+        'customers': "Inloggning",
+        'inlog' : "Personal & Stamgäster",  
         'pic1' : "img/sv.png",
-        'username_label' : "Användarnamn:",
-        'password_label' : "Lösenord:", 
-        'username_label2' : "Användarnamn:",
-        'password_label2' : "Lösenord:", 
-        'guest_order' : "Beställ som gäst", 
+        'username_label' : "Användarnamn",
+        'password_label' : "Lösenord",
+        'guest_order' : "Beställ vid bordet", 
         'submit' : "Logga in", 
-        'submit2' : "Logga in"
+        'wrong_creds': "Felaktigt lösenord eller användarnamn"
 
     }
 }

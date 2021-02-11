@@ -12,6 +12,11 @@ function update_view() {
         key = keys[idx];
         $("#" + key).text(get_string(key));
     };
+    placeholders = dict['placeholders'];
+    for (idx in placeholders) {
+        placeholder = placeholders[idx];
+        $("#" + placeholder).attr('placeholder', get_string(placeholder));
+    };
     pics = dict['pics'];
     for (idx in pics) {
         pic = pics[idx];

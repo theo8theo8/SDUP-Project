@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Great Vibes";
+    src: url("../fonts/GreatVibes-Regular.ttf");
+}
+
+body {
+    background-image: url('../img/ship.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#lang {
+    float: right;
+}

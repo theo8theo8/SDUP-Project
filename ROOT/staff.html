@@ -14,8 +14,9 @@
     <script type="text/javascript" src="js/Beverages.js"></script>
     <script type="text/javascript" src="js/DBLoaded.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
+    
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/staff.css">
     <link rel="icon" href="img/boat_icon.png">
 </head>
 
@@ -26,12 +27,19 @@
           background-repeat: no-repeat;
           background-size: cover;
         }
-    </style>
+    </style> 
 
-    <div>
-        Welcome staff
+    <div id=heading>
+        The Flying Dutchman
+        <img id="pic1" style="float:right; width: 8vw; height: 4vw;" src="" onclick="change_lang()">
+    </div> 
+ 
+    <div id="bordskarta">
+        <div draggable="true" id=twoPtable></div>
+        <button class="tableButton" id=twoPtableBut  onclick=addTable()>
     </div>
-
+    <script type="text/javascript" src="js/tables.js"></script>
+    
 </body>
 
 </html>

@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "Great Vibes";
+    src: url("../fonts/GreatVibes-Regular.ttf");
+  }
+
+#heading {
+    font-family: Great vibes;
+    font-size: 120px;
+    text-align: center;
+    }
+
+#bordskarta {
+    background-image: url('../img/bordskarta.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background:chocolate;*/
+    width: 35vw;
+    height: 35vw;
+    border: 5px solid rgb(0, 0, 0);
+    z-index: 1;
+    overflow: hidden;
+    touch-action: none;
+}
+
+#twoPtable {
+    margin: 1vw;
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    z-index: 9;
+    cursor: move;
+    background-color: #ff0000;
+    border: 1px solid #000000;
+    text-align: center;
+    touch-action: none;
+    user-select: none;
+}
+
+.tableButton {
+    float: right;
+    cursor: pointer;
+    background: #753c13;
+    border: none;
+    width:13%;
+    margin: 1%;
+    border-radius: 40px;
+    color: #E8CDBA;
+    padding: 10px 10px 10px 10px;
+    align-self: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}

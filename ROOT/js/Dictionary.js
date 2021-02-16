@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut'],       // keys for strings
     'placeholders' : ['username_label', 'password_label'],
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
@@ -32,7 +32,8 @@ dict = {
         'password_label' : "Password",
         'guest_order' : "Order at your table",
         'submit' : "Log in", 
-        'wrong_creds': "Wrong password or username"
+        'wrong_creds': "Wrong password or username",
+        'twoPtableBut' : "Create a table"
 
     },
     'sv' : {
@@ -45,7 +46,8 @@ dict = {
         'password_label' : "Lösenord",
         'guest_order' : "Beställ vid bordet", 
         'submit' : "Logga in", 
-        'wrong_creds': "Felaktigt lösenord eller användarnamn"
+        'wrong_creds': "Felaktigt lösenord eller användarnamn",
+        'twoPtableBut': "Skapa ett bord"
 
     }
 }

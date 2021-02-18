@@ -1146,5 +1146,44 @@ var DB = {
             "user_id": "83",
             "creditSEK" : "450"
         }
+    ],
+    "tables": [
+        {
+            "table_id": "1",
+            "Xpos": "30", 
+            "Ypos": "30"
+        }, {
+            "table_id": "2",
+            "Xpos": "30", 
+            "Ypos": "200"
+        }, {
+            "table_id": "3",
+            "Xpos": "30", 
+            "Ypos": "370"
+        }, {
+            "table_id": "4",
+            "Xpos": "30", 
+            "Ypos": "540"
+        }, {
+            "table_id": "5",
+            "Xpos": "200", 
+            "Ypos": "30"
+        }, {
+            "table_id": "6",
+            "Xpos": "200", 
+            "Ypos": "200"
+        }, {
+            "table_id": "7",
+            "Xpos": "200", 
+            "Ypos": "370"
+        }, {
+            "table_id": "8",
+            "Xpos": "540", 
+            "Ypos": "560"
+        }, {
+            "table_id": "9",
+            "Xpos": "540", 
+            "Ypos": "430"
+        }
     ]
 };

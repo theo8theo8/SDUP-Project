@@ -113,6 +113,24 @@ function allBeverages() {
 }
 
 // =====================================================================================================
+// Returns a list of all the names of the beverages in the database along with their ID.
+//
+function allBeveragesWithID() {
+
+    // Using a local variable to collect the items.
+    var collector = [];
+
+    // The DB is stored in the variable DB2, with "spirits" as key element. If you need to select only certain
+    // items, you may introduce filter functions in the loop... see the template within comments.
+    //
+    for (i = 0; i < DB2.spirits.length; i++) {
+        collector.push([DB2.spirits[i].nr, DB2.spirits[i].namn]);
+    };
+    //
+    return collector;
+}
+
+// =====================================================================================================
 // This function returns the names of all strong beverages (i.e. all that contain a percentage of alcohol
 // higher than the strength given in percent.
 //

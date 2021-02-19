@@ -24,6 +24,7 @@ function update_view() {
 //
 $(document).ready(function() {
     update_view();
+    $("#login-view").css("display","block");
 })
 // ==========================================================================
 // END OF FILE

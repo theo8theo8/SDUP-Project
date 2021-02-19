@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'login_heading', 'customers', 'staff', 'username_label', 'password_label', 'username_label2', 'password_label2', 'login', 'guest_order', 'submit', 'submit2'],       // keys for strings
+    'keys' : ['heading2','info', 'login_heading', 'customers', 'staff', 'username_label', 'password_label', 'username_label2', 'password_label2', 'login', 'guest_order', 'submit', 'submit2', 'mgrHeaderStock', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrItemPrice', 'mgrItemStock','mgrRestockItem', 'mgrRemoveItem'],       // keys for strings
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
                                     // handled in a special way.
@@ -33,7 +33,14 @@ dict = {
         'password_label2' : "Password:", 
         'guest_order' : "Order as guest",
         'submit' : "Submit",
-        'submit2' : "Submit"
+        'submit2' : "Submit",
+        'mgrHeaderStock' : "Edit stock",
+        'mgrHeaderEdit' : "Add item",
+        'mgrHeaderLang' : "Change language",
+        'mgrItemPrice' : "Price: ",
+        'mgrItemStock' : "Stock: ",
+        'mgrRestockItem' : "Restock item",
+        'mgrRemoveItem' : "Remove item"
 
     },
     'sv' : {
@@ -48,7 +55,14 @@ dict = {
         'password_label2' : "Lösenord:", 
         'guest_order' : "Beställ som gäst", 
         'submit' : "Logga in", 
-        'submit2' : "Logga in"
+        'submit2' : "Logga in",
+        'mgrHeaderStock' : "Hantera lager",
+        'mgrHeaderEdit' : "Lägg till meny",
+        'mgrHeaderLang' : "Ändra språk",
+        'mgrItemPrice' : "Pris: ",
+        'mgrItemStock' : "I lager: ",
+        'mgrRestockItem' : "Beställ påfyllning",
+        'mgrRemoveItem' : "Ta bort vara"
 
     }
 }

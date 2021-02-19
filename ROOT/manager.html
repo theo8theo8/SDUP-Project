@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Flying Dutchman - Manager</title>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/Dictionary.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/Login.js"></script>
+
+    <script type="text/javascript" src="js/ModelFunctions.js"></script>
+    <script type="text/javascript" src="js/Beverages.js"></script>
+    <script type="text/javascript" src="js/DBLoaded.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
+    
+    <script type="text/javascript" src="js/manager.js"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/manager.css">
+    <link rel="icon" href="img/boat_icon.png">
+
+    <script>
+
+
+    </script>
+</head>
+
+<body>
+    <div id="mgrView">
+        <div class="mgrHeader">
+            <div class="mgrHeaderItem" id="mgrHeaderStock" onclick="loadMgrEditStock()">a</div>
+            <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()">c</div>
+            <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()">d</div>
+        </div>
+        <div id="mgrContent">
+            <div id="itemModal" class="modal">
+
+                <div class="modal-inside">
+                    <span class="modalX" onclick="closeModal()">&times;</span>
+                    <div id="modal-content">
+                        <h2>Editing: abc</h2>
+                    </div>
+                </div>
+              
+              </div>
+        </div>
+    </div>
+</body>
+
+</html>

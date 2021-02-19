@@ -55,7 +55,7 @@ function Data() {
             this.users = JSON.parse(response);
             console.log(this.users[2].username);
 
-        }, 'DBFilesJSON/dutchman_table_users.json');
+        }, 'Other dutchman files/DBFilesJSON/dutchman_table_users.json');
     };
 
 // Sample function to load all the beverages into the global beverages variable.

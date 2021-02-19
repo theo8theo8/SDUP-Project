@@ -11,7 +11,7 @@ function openModal() {
 
 function mgrListClick(item) {
     openModal();
-    $('#modal-content').append('<h1>Editing: ' + $(item).text() + '</h1>');
+    $('#modal-content').append('<h1>' + $(item).text() + '</h1>');
     $('#modal-content').append('<h3 id="mgrItemPrice"></h3>');
     $('#modal-content').append('<p id="mgrItemStock"></p>');
     $('#modal-content').append('<button class="modal-button" id="mgrRestockItem"></button>');

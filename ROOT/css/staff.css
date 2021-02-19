@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "Great Vibes";
+    src: url("../fonts/GreatVibes-Regular.ttf");
+  }
+
+#heading {
+    font-family: Great vibes;
+    font-size: 120px;
+    text-align: center;
+    }
+
+#bordskarta {
+    background-image: url('../img/bordskarta.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35vw;
+    height: 35vw;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    z-index: 1;
+    overflow: hidden;
+    touch-action: none;
+    margin:1vw;
+    float:left;
+}
+
+#twoPtable {
+    margin: 1vw;
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    z-index: 9;
+    cursor: move;
+    background-color: #6d4423;
+    border: 3px solid #000000;
+    border-radius: 7px;
+    text-align: center;
+    touch-action: none;
+    user-select: none;
+}
+
+.tableButton {
+    float: right;
+    cursor: pointer;
+    background: #6d4423;
+    border: none;
+    width:13%;
+    margin: 1%;
+    border: 3px solid #000000;
+    border-radius: 40px;
+    color: #b4a899;
+    padding: 10px 10px 10px 10px;
+    align-self: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.logoutButton {
+    float: right;
+    cursor: pointer;
+    background: #7a0000;
+    border: none;
+    width:6vw;
+    height: 4vw;
+    margin: 1%;
+    border-radius: 20px;
+    color: #E8CDBA;
+    padding: 10px 10px 10px 10px;
+    align-self: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+}
+
+#order {
+    width:20vw;
+    height: 35vw;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    background-color: darkgreen;
+    margin-top: 1vw;
+    float: left;
+}
+
+#orderbtn {
+    border-radius: 10px;
+    background-color: rgb(61, 33, 0);
+    color:rgb(199, 165, 133)
+}

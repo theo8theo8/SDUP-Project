@@ -1,63 +1,137 @@
-@font-face {
-    font-family: "Great Vibes";
-    src: url("../fonts/GreatVibes-Regular.ttf");
-}
-
-#heading {
-    font-family: Great vibes;
-    font-size: 120px;
-    text-align: center;
-  }
-
-#heading2 {
-    font-family: Open sans;
-    font-size: 30px;
-    text-align: center;
-  }
-
-#info {
-    font-family: Open sans;
-    font-size: 20px;
-    text-align: center;
-    padding: 0% 10% 0% 10%;
-  }
-
-#login_heading {
-  font-family: Open sans;
-  font-size: 40px;
-  text-align: left;
-  padding: 5% 10% 0% 10%;
-}
-.login {
-  font-family: Open sans;
-  float:left;
-  width: 23%;
-  font-size: 30px;
-  text-align: center;
-  padding: 5% 5% 0% 5%;
-}
-
-.button {
-  background: #0080b3; /* Green */
-  border: none;
-  border-radius: 40px;
-  color: white;
-  padding: 50px 40px;
-  text-align: center;
-  text-decoration:wavy;
-  display: inline-block;
-  font-size: 40px;
+body {
+  width:100%;
+  height:100%;
+  margin:0; 
 }
 
 .main-view {
   width:100%;
   height:100%; 
+  margin:0;
   position:fixed;
   display:none;
 }
 
 #login-view {
-  background-image: url('../img/the_flying_dutchman.jpg');
+  background-image: url('../img/ship.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  color: #E8CDBA;
+  padding: 10px 10px 10px 10px;
+  align-self: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
+
+@font-face {
+  font-family: "Great Vibes";
+  src: url("../fonts/GreatVibes-Regular.ttf");
+}
+
+#heading {
+  font-family: Great vibes;
+  font-size: 120px;
+  text-align: center;
+}
+
+#heading2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+
+#info {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding: 0% 10% 0% 10%;
+}
+
+#inlog {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding: 2% 10% 0% 10%;
+}
+
+.login {
+  float:left;
+  margin: 5% 5% 5% 20%;
+  background-color: #a26539dc;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 500px;
+  /*margin: 7em auto;*/
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.login_text {
+  padding-top: 40px;
+  color: #3E2514;
+  border: #25160c;
+  border-radius: 4px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.form_input {
+  width: 76%;
+  color: #3E2514;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: #4f463f86;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.form_input:focus {
+  border: 3px solid #4f463f !important;  
+}
+
+.button {
+  cursor: pointer;
+  background: #753c13;
+  border: none;
+  width:60%;
+  border-radius: 40px;
+  color: #E8CDBA;
+  padding: 10px 10px 10px 10px;
+  align-self: center;
+  margin-top: 5%;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
+
+.big_button {
+  margin-top: 15%;
+  width: 80%;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 5%;
+}
+
+#wrong_creds {
+  color:red;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: center;
+  margin: 0px 0px 0px 0px;
+}
+
+::placeholder {
+  color: #3E2514;
 }

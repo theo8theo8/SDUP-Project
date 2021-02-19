@@ -18,14 +18,6 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="img/boat_icon.png">
 
-    <style>
-        body {
-            width:100%;
-            height:100%;
-            margin:0; 
-        }
-    </style>
-
     <script>
         function changeView(view) {
             $(".main-view").each(function() {
@@ -41,7 +33,7 @@
 <div class="main-view" id="login-view">
   <div id=heading>
         The Flying Dutchman
-        <img id="pic1" style="width: 10vw;" src="" onclick="change_lang()">
+        <img id="pic1" style="float:right; width: 8vw; height: 4vw; margin: 1%;" src="" onclick="change_lang()">
     </div> 
 
     <div id=heading2></div>
@@ -49,18 +41,13 @@
     <div id=info></div>
     
     <div class="login">
-        <div id=customers></div>
-        <form method="get" >
-            <label for="username" id=username_label></label>
-            <input type="text" id="username" name="username"><br><br>
-            <label for="password" id=password_label></label>
-            <input type="text" id="password" name="password"><br><br>
-          </form>
-          <button id=submit onclick=user_login()>
-    </div>
-
-    <div class="login">
-        <button class=button id=guest_order onclick=guest_login()></button>
+        <button class="button big_button" id=guest_order onclick=guest_login()></button>
+        <div class="login_text" id=customers ></div>
+        <div class="login_text" id=inlog></div><br>
+        <input class="form_input" type="text" id="username_label">
+        <input class="form_input" type="password" id="password_label">
+        <div id=wrong_creds style="display: none;"></div>
+        <button class="button" id=submit  onclick=user_login()>
     </div>
 </div>
 <div class="main-view" id="manager-view">Manager view</div>

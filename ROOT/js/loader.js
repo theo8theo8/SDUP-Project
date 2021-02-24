@@ -205,7 +205,6 @@ function allMenuBeverages() {
 function getOrder(table_id) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
-            console.log(DB.orders[i]);
             return DB.orders[i].item_id;
         }
     }
@@ -223,10 +222,7 @@ function getNameFromId(id) {
 function getIdFromName(name) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
-        console.log(name);
-        console.log(all[i][1]);
         if (all[i][1] === name) {
-            console.log(all[i][0]);
             return all[i][0];
         }
     }

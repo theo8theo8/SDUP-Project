@@ -80,6 +80,7 @@
     margin-top: 1vw;
     margin-right: 1vw;
     float: left;
+    overflow: auto;
 }
 
 #menu {
@@ -99,13 +100,14 @@
 }
 
 .menuItem {
-    width:90%;
-    font-size:25px;
-    padding:1%;
+    width:88%;
+    font-size:28px;
+    padding:2%;
     border-style:groove;
     border-radius: 10px;
     margin:3%;
     background-color:lightblue;
+    height: 5%;
 }
 
 .menuHeader {
@@ -117,11 +119,18 @@
 }
 
 .addToOrderButton {
-    font-size:40px; 
+    font-size:27px; 
+    font-weight: bold;
     background-color:rgb(57, 179, 0);
+    width: 8%;
+    float:right;
 }
 
 .removeFromOrderButton {
-    font-size:40px; 
+    font-size:27px; 
+    font-weight: bold;
+    margin-left: 2%;
     background-color:rgb(179, 0, 0);
+    width: 8%;
+    float:right;
 }

@@ -66,7 +66,7 @@ function Data() {
             this.beverages = JSON.parse(response);
             console.log(this.beverages[1].nr);
 
-        }, 'DBFilesJSON/dutchman_table_sbl_beer.json');
+        }, 'Other dutchman files/DBFilesJSON/dutchman_table_sbl_beer_refined.json');
     };
 
 // Sample function to access a user from the database.

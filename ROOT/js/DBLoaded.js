@@ -1186,120 +1186,42 @@ var DB = {
             "Ypos": "430"
         }
     ],
-    "menu": [
-        {   "name": "Staropramen",
-            "bev_id": "1206",
-            "stock": "30",
-            "price": "60"
-        },
-        {
-            "name": "Norrlands Guld",
-            "bev_id": "310574",
-            "stock": "30",
-            "price": "60"
-        },
-        {
-            "name": "Melleruds",
-            "bev_id": "751011",
-            "stock": "30",
-            "price": "60"
-        },
-        {
-            "name": "Lagunitas Pale Ale",
-            "bev_id": "707078",
-            "stock": "30",
-            "price": "60"
-        },
-        {
-            "name": "Brooklyn",
-            "bev_id": "166018",
-            "stock": "30",
-            "price": "60"
-        },
-        {
-            "name": "Vicar's Choice",
-            "bev_id": "190680",
-            "stock": "30",
-            "price": "70"
-        },
-        {
-            "name": "Allesverloren",
-            "bev_id": "33861",
-            "stock": "30",
-            "price": "70"
-        },
-        {
-            "name": "JP chenet",
-            "bev_id": "36345",
-            "stock": "30",
-            "price": "70"
-        },
-        {
-            "name": "Barone Ricasoli",
-            "bev_id": "215617",
-            "stock": "30",
-            "price": "70"
-        },
-        {
-            "name": "Laphroaig",
-            "bev_id": "560847",
-            "stock": "30",
-            "price": "20"
-        },
-        {
-            "name": "Jameson",
-            "bev_id": "301013",
-            "stock": "30",
-            "price": "20"
-        },
-        {
-            "name": "Absolut vodka",
-            "bev_id": "346896",
-            "stock": "30",
-            "price": "20"
-        },
-        {
-            "name": "Martini",
-            "bev_id": "13886",
-            "stock": "30",
-            "price": "20"
-        },
-        {
-            "name": "Limoncello",
-            "bev_id": "34346",
-            "stock": "30",
-            "price": "20"
-        }
-    ],
     "orders": [
         {   
-            
             "table": 1,
             "item_id": "1206, 1206, 1206"
         },
         {   
-            "table": "2"
+            "table": 2,
+            "item_id": ""
         },
         {   
-            "table": "3"
+            "table": 3,
+            "item_id": ""
         },
         {   
-            "table": "4"
+            "table": 4,
+            "item_id": ""
         },
         {   
-            "table": "5"
+            "table": 5,
+            "item_id": ""
         },
         {   
-            "table": "6"
+            "table": 6,
+            "item_id": ""
         },
         {   
-            "table": "7"
+            "table": 7,
+            "item_id": ""
         },
         {   
-            "table": "8"
+            "table": 8,
+            "item_id": ""
         },
         {   
-            "table": "9"
+            "table": 9,
+            "item_id": ""
         }
     ]
 };

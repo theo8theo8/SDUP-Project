@@ -195,8 +195,8 @@ function allMenuBeverages() {
     // Using a local variable to collect the items.
     var collector = [];
 
-    for (i = 0; i < DB.menu.length; i++) {
-        collector.push([DB.menu[i].name, DB.menu[i].bev_id, DB.menu[i].stock, DB.menu[i].price]);
+    for (i = 0; i < DB2.spirits.length; i++) {
+        collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
     };
 
     return collector;
@@ -216,6 +216,18 @@ function getNameFromId(id) {
     for (i=0; i < all.length; i++) {
         if (parseInt(all[i][0]) == parseInt(id)) {
             return all[i][1];
+        }
+    }
+}
+
+function getIdFromName(name) {
+    var all = allBeveragesWithID();
+    for (i=0; i < all.length; i++) {
+        console.log(name);
+        console.log(all[i][1]);
+        if (all[i][1] === name) {
+            console.log(all[i][0]);
+            return all[i][0];
         }
     }
 }

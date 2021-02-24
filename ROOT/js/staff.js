@@ -23,6 +23,7 @@ container.addEventListener("mousedown", dragStart, false);
 container.addEventListener("mouseup", dragEnd, false);
 container.addEventListener("mousemove", drag, false);
 loadAllTables();
+showMenu();
 
 function dragStart(e) {
     items = document.querySelectorAll("#twoPtable");
@@ -155,11 +156,28 @@ function loadAllTables() {
 }
 
 function showOrder(table_id) {
-  var innerDiv = document.createElement('p');
-  var text = document.createTextNode(table_id);
-  innerDiv.style = "font-size: 550px; margin:5%; text-align:center";
-  innerDiv.id = "showOrder";
-  innerDiv.appendChild(text);
-  order.innerHTML = '';
-  order.appendChild(innerDiv);
+  $('#order').empty();
+  $('#order').append('<div class="menuHeader"> <span style="font-weight:bold">' + "Order for table " + table_id + ' </span>' + '</div>');
+  var order = getOrder(table_id);
+  order = order.split(", ");
+  for (var i = 0; i < order.length; i++) {
+    const item = getNameFromId(order[i]);
+    $('#order').append('<div class="menuItem"> <span style="font-weight:bold">' + item + ' </span>' + '<button class="removeFromOrderButton" onclick="removeFromOrder(this)">-</button> </div>');
+  }
+}
+
+function addToOrder(item) {
+  ;
+}
+
+function removeFromOrder() {
+  ;
+}
+
+function showMenu(){
+  var menu = allMenuBeverages();
+  for (i = 0; i < menu.length; i++) {
+    const element = menu[i];
+    $('#menu').append('<div class="menuItem"> <span style="font-weight:bold">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this)">+</button> </div>');
+  }
 }

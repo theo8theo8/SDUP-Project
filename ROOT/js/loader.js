@@ -124,7 +124,7 @@ function allBeveragesWithID() {
     // items, you may introduce filter functions in the loop... see the template within comments.
     //
     for (i = 0; i < DB2.spirits.length; i++) {
-        collector.push([DB2.spirits[i].nr, DB2.spirits[i].namn]);
+        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn]);
     };
     //
     return collector;
@@ -189,6 +189,35 @@ function addToSet(set, item) {
 //
 function percentToNumber(percentStr) {
     return Number(percentStr.slice(0,-1));
+}
+
+function allMenuBeverages() {
+    // Using a local variable to collect the items.
+    var collector = [];
+
+    for (i = 0; i < DB.menu.length; i++) {
+        collector.push([DB.menu[i].name, DB.menu[i].bev_id, DB.menu[i].stock, DB.menu[i].price]);
+    };
+
+    return collector;
+}
+
+function getOrder(table_id) {
+    for (i=0; i < DB.orders.length; i++) {
+        if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
+            console.log(DB.orders[i]);
+            return DB.orders[i].item_id;
+        }
+    }
+}
+
+function getNameFromId(id) {
+    var all = allBeveragesWithID();
+    for (i=0; i < all.length; i++) {
+        if (parseInt(all[i][0]) == parseInt(id)) {
+            return all[i][1];
+        }
+    }
 }
 
 // =====================================================================================================

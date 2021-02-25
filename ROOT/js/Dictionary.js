@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderStock', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrItemPrice', 'mgrItemStock','mgrRestockItem', 'mgrRemoveItem'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderStock', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrItemPrice', 'mgrItemStock','mgrRestockItem', 'mgrRemoveItem', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader'],       // keys for strings
     'placeholders' : ['username_label', 'password_label'],
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
@@ -43,7 +43,13 @@ dict = {
         'mgrRemoveItem' : "Remove item",
         'wrong_creds': "Wrong password or username",
         'twoPtableBut' : "Create a table", 
-        'logOut' : "Log out"
+        'logOut' : "Log out",
+        'sortAll': "All",
+        'sortBeer': "Beer",
+        'sortWine': "Wine",
+        'sortSpirits': "Spirits", 
+        'orderHeader': "Order for table ",
+        'orderSubHeader': "Total cost: "
 
     },
     'sv' : {
@@ -66,7 +72,13 @@ dict = {
         'mgrRemoveItem' : "Ta bort vara",
         'wrong_creds': "Felaktigt lösenord eller användarnamn",
         'twoPtableBut': "Skapa ett bord", 
-        'logOut' : "Logga ut"
+        'logOut' : "Logga ut",
+        'sortAll': "Alla",
+        'sortBeer': "Öl",
+        'sortWine': "Vin",
+        'sortSpirits': "Sprit", 
+        'orderHeader': "Order för bord ",
+        'orderSubHeader': "Total kostnad: "
 
     }
 }
@@ -90,6 +102,7 @@ function change_lang() {
         language = 'sv';
     } else {language = 'en'};
     update_view();
+    updateLangStaff();
 }
 
 // ==========================================================================

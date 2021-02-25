@@ -72,11 +72,10 @@
 }
 
 #order {
-    width:20vw;
+    width:25vw;
     height: 35vw;
     border: 5px solid rgb(0, 0, 0);
-    border-radius: 30px;
-    background-color: darkgreen;
+    background-color: rgb(214, 182, 135);
     margin-top: 1vw;
     margin-right: 1vw;
     float: left;
@@ -87,7 +86,7 @@
     width:25vw;
     height: 35vw;
     border: 5px solid rgb(0, 0, 0);
-    background-color: rgb(22, 0, 100);
+    background-color: rgb(214, 182, 135);
     margin-top: 1vw;
     float: left;
     overflow: auto;
@@ -101,36 +100,48 @@
 
 .menuItem {
     width:88%;
-    font-size:28px;
+    font-size:150%;
     padding:2%;
-    border-style:groove;
-    border-radius: 10px;
+    border: ridge rgba(0, 0, 0, 0.836);
     margin:3%;
     background-color:lightblue;
-    height: 5%;
+    overflow: hidden;
 }
 
 .menuHeader {
-    width:90%;
-    padding-top: 5%;
+    padding-top: 4%;
     padding-bottom: 2%;
-    padding-left: 10%;
-    font-size:40px;
+    font-size:250%;
+    text-align:center;
+}
+
+.orderSubHeader {
+    padding-bottom: 2%;
+    font-size:150%;
+    text-align:center;
 }
 
 .addToOrderButton {
-    font-size:27px; 
+    font-size:90%; 
     font-weight: bold;
     background-color:rgb(57, 179, 0);
-    width: 8%;
+    height: 100%;
     float:right;
 }
 
 .removeFromOrderButton {
-    font-size:27px; 
+    font-size:90%; 
     font-weight: bold;
     margin-left: 2%;
     background-color:rgb(179, 0, 0);
-    width: 8%;
     float:right;
+}
+
+.sortButton {
+    width:19%;
+    height: 7%;
+    font-size:150%; 
+    font-weight: bold;
+    margin: 3%;
+    background-color:#6d4423;
 }

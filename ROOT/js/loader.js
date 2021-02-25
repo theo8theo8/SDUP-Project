@@ -124,7 +124,7 @@ function allBeveragesWithID() {
     // items, you may introduce filter functions in the loop... see the template within comments.
     //
     for (i = 0; i < DB2.spirits.length; i++) {
-        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn]);
+        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn, DB2.spirits[i].prisinklmoms]);
     };
     //
     return collector;
@@ -219,6 +219,15 @@ function getNameFromId(id) {
     }
 }
 
+function getCostFromId(id) {
+    var all = allBeveragesWithID();
+    for (i=0; i < all.length; i++) {
+        if (parseInt(all[i][0]) == parseInt(id)) {
+            return all[i][2];
+        }
+    }
+}
+
 function getIdFromName(name) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -226,6 +235,28 @@ function getIdFromName(name) {
             return all[i][0];
         }
     }
+}
+
+function allBeveragesOfType(type) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if(DB2.spirits[i].varugrupp.includes(type)) {
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+        }
+    };
+    return collector;
+}
+
+function allBeveragesWithStrength(strength) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+        };
+    };
+    return collector;
 }
 
 // =====================================================================================================

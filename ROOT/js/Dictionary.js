@@ -11,8 +11,8 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderStock', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrItemPrice', 'mgrItemStock','mgrRestockItem', 'mgrRemoveItem'],       // keys for strings
-    'placeholders' : ['username_label', 'password_label'],
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel'],       // keys for strings
+    'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
                                     // handled in a special way.
@@ -34,13 +34,24 @@ dict = {
         'password_label2' : "Password:", 
         'guest_order' : "Order at your table",
         'submit' : "Log in",
-        'mgrHeaderStock' : "Edit stock",
         'mgrHeaderEdit' : "Add item",
         'mgrHeaderLang' : "Change language",
-        'mgrItemPrice' : "Price: ",
-        'mgrItemStock' : "Stock: ",
+        'mgrCategorySelect' : "Category",
+        'mgrCategoryAll' : "All",
+        'mgrItemName' : "Name",
+        'mgrItemPrice' : "Price",
+        'mgrItemStock' : "Stock",
+        'mgrItemCategory' : "Category",
+        'mgrItemAlcContent' : "Alcohol content",
+        'mgrItemSupplier' : "Supplier",
+        'mgrAdd' : "Add",
+        'mgrAddItem' : "Add item",
         'mgrRestockItem' : "Restock item",
         'mgrRemoveItem' : "Remove item",
+        'mgrRestockCount' : "Amount", 
+        'mgrConfirmRestock' : "Restocking: ",
+        'mgrConfirmDelete' : "Are you sure you want to remove: ",
+        'mgrCancel' : "Cancel",
         'wrong_creds': "Wrong password or username",
         'twoPtableBut' : "Create a table", 
         'logOut' : "Log out"
@@ -57,13 +68,24 @@ dict = {
         'guest_order' : "Beställ vid bordet", 
         'submit' : "Logga in", 
         'submit2' : "Logga in",
-        'mgrHeaderStock' : "Hantera lager",
-        'mgrHeaderEdit' : "Lägg till meny",
+        'mgrHeaderEdit' : "Lägg till vara",
         'mgrHeaderLang' : "Ändra språk",
-        'mgrItemPrice' : "Pris: ",
-        'mgrItemStock' : "I lager: ",
+        'mgrCategorySelect' : "Kategori",
+        'mgrCategoryAll' : "Alla",
+        'mgrItemName' : "Namn",
+        'mgrItemPrice' : "Pris",
+        'mgrItemStock' : "I lager",
+        'mgrItemCategory' : "Kategori",
+        'mgrItemAlcContent' : "Alkoholhalt",
+        'mgrItemSupplier' : "Leverantör",
+        'mgrAdd' : "Lägg till",
+        'mgrAddItem' : "Lägg till vara",
         'mgrRestockItem' : "Beställ påfyllning",
         'mgrRemoveItem' : "Ta bort vara",
+        'mgrRestockCount' : "Antal",
+        'mgrConfirmRestock' : "Fyller på: ",
+        'mgrConfirmDelete' : "Är du säker att du vill ta bort: ",
+        'mgrCancel' : "Avbryt",
         'wrong_creds': "Felaktigt lösenord eller användarnamn",
         'twoPtableBut': "Skapa ett bord", 
         'logOut' : "Logga ut"

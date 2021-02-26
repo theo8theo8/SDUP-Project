@@ -131,6 +131,21 @@ function allBeveragesWithID() {
 }
 
 // =====================================================================================================
+// Returns a list of all the names of the beverages in the database of a certain category along with their ID.
+//
+function allBeveragesOfTypeWithID(type) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (type == "" || DB2.spirits[i].varugrupp == type) {
+            collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn]);
+        }
+    };
+    
+    return collector;
+}
+
+// =====================================================================================================
 // This function returns the names of all strong beverages (i.e. all that contain a percentage of alcohol
 // higher than the strength given in percent.
 //
@@ -169,8 +184,64 @@ function beverageTypes() {
     var types = [];
     for (i = 0; i < DB2.spirits.length; i++) {
         addToSet(types, DB2.spirits[i].varugrupp);
-    };
+    }
     return types;
+}
+
+// =====================================================================================================
+// Gets all info from a beverage
+//
+function beverageInfo(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            return DB2.spirits[i];
+        }
+    }
+}
+
+// =====================================================================================================
+// Changes the stock of beverage of id with amount
+//
+function changeStock(id, amount) {
+    console.log(amount);
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            DB2.spirits[i].stock = Number(DB2.spirits[i].stock) + Number(amount)
+        }
+    }
+    return false;
+}
+
+// =====================================================================================================
+// Removes a beverage
+//
+function addBeverage(beverage) {
+    DB2.spirits.push(beverage);
+}
+
+// =====================================================================================================
+// Removes a beverage
+//
+function removeBeverage(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            DB2.spirits.splice(i, 1);
+            return true;
+        }
+    }
+    return false;
+}
+
+// =====================================================================================================
+// Checks if ID exists
+//
+function IDExists(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // =====================================================================================================

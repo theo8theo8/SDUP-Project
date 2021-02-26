@@ -21,8 +21,9 @@ body {
     float:left;
     margin: 3vh 0.5vw 1vh 0.5vw;
     background-color: #a26539dc;
-    display: flex;
+    /*display: flex;
     flex-direction: column;
+    */
     width: 48vw;
     height: 95vh;
     /*margin: 7em auto;*/
@@ -43,8 +44,25 @@ body {
     /* outline: none; */
     box-sizing: border-box;
     /* border: 2px solid rgba(0, 0, 0, 0.02); */
+    margin: 1% auto auto auto;
     width:90%;
     height:80%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
+    overflow: auto;
+}
+
+.menuItem {
+    width:90%;
+    font-size:25px;
+    padding:1%;
+    border-style:groove;
+    border-radius: 10px;
+    margin:3%;
+    background-color:lightblue;
+}
+
+.addToOrderButton {
+    font-size:40px;
+    background-color:rgb(57, 179, 0);
 }

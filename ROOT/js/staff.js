@@ -116,6 +116,7 @@ function addTable() {
   div.appendChild(innerDiv);
 
   container.appendChild(div);
+  addEmptyOrder(nextNum);
   nextNum++;
 }
 
@@ -151,10 +152,21 @@ function loadAllTables() {
   }
 }
 
+function getTotalCost(order) {
+  var totalCost = 0;
+  for (let key in order) {
+    const cost = parseInt(getCostFromId(key));
+    const no = order[key];
+    totalCost += cost*no;
+  }
+  return totalCost;
+}
+
 function showOrder(table_id) {
   $('#order').empty();
-  $('#order').append('<div class="menuHeader"> <span style="font-weight:bold">' + "Order for table " + table_id + ' </span>' + '</div>');
+  $('#order').append('<div class="menuHeader"> <span style="font-weight:bold">' + get_string('orderHeader') /*"Order for table: "*/ + table_id + ' </span>' + '</div>');
   var order = getOrder(table_id);
+  $('#order').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('orderSubHeader') /*"Total cost: "*/ + getTotalCost(order) + "kr" +  ' </span>' + '</div>');
   for(let key in order) {
     const item = getNameFromId(key);
     $('#order').append('<div class="menuItem"> <span style="font-weight:bold">' + item + ": " + order[key] +  ' </span>' + '<button class="removeFromOrderButton" onclick="removeFromOrder(this.parentElement.children[0].innerText)">-</button> <button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
@@ -203,10 +215,43 @@ function removeFromOrder(item) {
   }
 }
 
-function showMenu(){
-  var menu = allMenuBeverages();
-  for (i = 0; i < menu.length; i++) {
+function addBasicMenu(){
+  $('#menu').empty();
+  $('#menu').append('<button class="sortButton" id=sortAll onclick=showMenu()></button>');
+  $('#menu').append('<button class="sortButton" id=sortBeer onclick=showMenu("beer")></button>');
+  $('#menu').append('<button class="sortButton" id=sortWine onclick=showMenu("wine")></button>');
+  $('#menu').append('<button class="sortButton" id=sortSpirits onclick=showMenu("spirits")></button>');
+  update_view();
+}
+
+function showParticularMenu(menu) {
+  for (var i = 0; i < menu.length; i++) {
     const element = menu[i];
     $('#menu').append('<div class="menuItem"> <span style="font-weight:bold">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
   }
+}
+
+function addEmptyOrder(id) {
+  DB.orders.push({ table: id, item_id: {}});
+}
+
+function showMenu(type) {
+  addBasicMenu();
+  switch (type) {
+    case 'beer':
+      showParticularMenu(allBeveragesOfType("Öl"));
+      break;
+    case 'wine':
+      showParticularMenu(allBeveragesOfType("vin"));
+      break;
+    case 'spirits':
+      showParticularMenu(allBeveragesWithStrength(20));
+      break;
+    default:
+      showParticularMenu(allMenuBeverages());
+  }
+}
+
+function updateLangStaff() {
+  showOrder(currentTableID);
 }

@@ -11,8 +11,9 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
+
     'pics' : ['pic1'],              // keys for pictures
                                     // pictures have to be
                                     // handled in a special way.
@@ -54,7 +55,13 @@ dict = {
         'mgrCancel' : "Cancel",
         'wrong_creds': "Wrong password or username",
         'twoPtableBut' : "Create a table", 
-        'logOut' : "Log out"
+        'logOut' : "Log out",
+        'sortAll': "All",
+        'sortBeer': "Beer",
+        'sortWine': "Wine",
+        'sortSpirits': "Spirits", 
+        'orderHeader': "Order for table ",
+        'orderSubHeader': "Total cost: "
 
     },
     'sv' : {
@@ -88,7 +95,13 @@ dict = {
         'mgrCancel' : "Avbryt",
         'wrong_creds': "Felaktigt lösenord eller användarnamn",
         'twoPtableBut': "Skapa ett bord", 
-        'logOut' : "Logga ut"
+        'logOut' : "Logga ut",
+        'sortAll': "Alla",
+        'sortBeer': "Öl",
+        'sortWine': "Vin",
+        'sortSpirits': "Sprit", 
+        'orderHeader': "Order för bord ",
+        'orderSubHeader': "Total kostnad: "
 
     }
 }
@@ -112,6 +125,7 @@ function change_lang() {
         language = 'sv';
     } else {language = 'en'};
     update_view();
+    updateLangStaff();
 }
 
 // ==========================================================================

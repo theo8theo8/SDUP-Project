@@ -350,7 +350,7 @@ var DB2 = {
         "prisperliter": null,
         "saljstart": "1994-02-14",
         "slutlev": " ",
-        "varugrupp": "\u00c3\u2013l, Ljus lager",
+        "varugrupp": "Öl, Ljus lager",
         "forpackning": "Flaska",
         "forslutning": "",
         "ursprung": "",

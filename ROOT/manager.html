@@ -23,30 +23,37 @@
     <link rel="icon" href="img/boat_icon.png">
 
     <script>
-
-
+    // TODO: Move to main.js and call when activating manager view
+    $(document).ready(function() {
+        loadMgrEditStock();
+        loadCategoryDropdown();
+    })
     </script>
 </head>
 
 <body>
     <div id="mgrView">
         <div class="mgrHeader">
-            <div class="mgrHeaderItem" id="mgrHeaderStock" onclick="loadMgrEditStock()">a</div>
-            <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()">c</div>
-            <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()">d</div>
+            <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()"></div>
+            <div class="mgrHeaderItem" id="logOut" onclick=""></div>
+            <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()"></div>
         </div>
-        <div id="mgrContent">
-            <div id="itemModal" class="modal">
-
-                <div class="modal-inside">
-                    <span class="modalX" onclick="closeModal()">&times;</span>
-                    <div id="modal-content">
-                        <h2>Editing: abc</h2>
-                    </div>
+        <div id="categoryContainer" style="margin-bottom: 10px;">
+            <button id="mgrCategorySelect" onclick="categoryDropdown()"></button>
+            <div id="categorySelectDropdown"></div>
+        </div>
+        <div id="item-modal">
+            <div id="confirm-modal">
+                <div id="confirm-modal-inside">
+                    <div id="confirm-modal-content-inside"></div>
                 </div>
-              
-              </div>
+            </div>
+            <div id="item-modal-inside">
+                <span class="modalX" onclick="closeItemModal()">&times;</span>
+                <div id="item-modal-content-inside" ></div>
+            </div>             
         </div>
+        <div id="mgrContent"></div>
     </div>
 </body>
 

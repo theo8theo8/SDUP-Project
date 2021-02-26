@@ -1189,39 +1189,39 @@ var DB = {
     "orders": [
         {   
             "table": 1,
-            "item_id": "1206, 1206, 1206"
+            "item_id": {"1206":3}
         },
         {   
             "table": 2,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 3,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 4,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 5,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 6,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 7,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 8,
-            "item_id": ""
+            "item_id": {}
         },
         {   
             "table": 9,
-            "item_id": ""
+            "item_id": {}
         }
     ]
 };

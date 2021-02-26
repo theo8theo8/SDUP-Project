@@ -124,9 +124,24 @@ function allBeveragesWithID() {
     // items, you may introduce filter functions in the loop... see the template within comments.
     //
     for (i = 0; i < DB2.spirits.length; i++) {
-        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn]);
+        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn, DB2.spirits[i].prisinklmoms]);
     };
     //
+    return collector;
+}
+
+// =====================================================================================================
+// Returns a list of all the names of the beverages in the database of a certain category along with their ID.
+//
+function allBeveragesOfTypeWithID(type) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (type == "" || DB2.spirits[i].varugrupp == type) {
+            collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn]);
+        }
+    };
+    
     return collector;
 }
 
@@ -169,8 +184,64 @@ function beverageTypes() {
     var types = [];
     for (i = 0; i < DB2.spirits.length; i++) {
         addToSet(types, DB2.spirits[i].varugrupp);
-    };
+    }
     return types;
+}
+
+// =====================================================================================================
+// Gets all info from a beverage
+//
+function beverageInfo(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            return DB2.spirits[i];
+        }
+    }
+}
+
+// =====================================================================================================
+// Changes the stock of beverage of id with amount
+//
+function changeStock(id, amount) {
+    console.log(amount);
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            DB2.spirits[i].stock = Number(DB2.spirits[i].stock) + Number(amount)
+        }
+    }
+    return false;
+}
+
+// =====================================================================================================
+// Removes a beverage
+//
+function addBeverage(beverage) {
+    DB2.spirits.push(beverage);
+}
+
+// =====================================================================================================
+// Removes a beverage
+//
+function removeBeverage(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            DB2.spirits.splice(i, 1);
+            return true;
+        }
+    }
+    return false;
+}
+
+// =====================================================================================================
+// Checks if ID exists
+//
+function IDExists(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // =====================================================================================================
@@ -205,7 +276,6 @@ function allMenuBeverages() {
 function getOrder(table_id) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
-            console.log(DB.orders[i]);
             return DB.orders[i].item_id;
         }
     }
@@ -220,16 +290,44 @@ function getNameFromId(id) {
     }
 }
 
+function getCostFromId(id) {
+    var all = allBeveragesWithID();
+    for (i=0; i < all.length; i++) {
+        if (parseInt(all[i][0]) == parseInt(id)) {
+            return all[i][2];
+        }
+    }
+}
+
 function getIdFromName(name) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
-        console.log(name);
-        console.log(all[i][1]);
         if (all[i][1] === name) {
-            console.log(all[i][0]);
             return all[i][0];
         }
     }
+}
+
+function allBeveragesOfType(type) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if(DB2.spirits[i].varugrupp.includes(type)) {
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+        }
+    };
+    return collector;
+}
+
+function allBeveragesWithStrength(strength) {
+    var collector = [];
+
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+        };
+    };
+    return collector;
 }
 
 // =====================================================================================================

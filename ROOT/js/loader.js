@@ -124,7 +124,7 @@ function allBeveragesWithID() {
     // items, you may introduce filter functions in the loop... see the template within comments.
     //
     for (i = 0; i < DB2.spirits.length; i++) {
-        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn, DB2.spirits[i].prisinklmoms]);
+        collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn, DB2.spirits[i].prisinklmoms, DB2.spirits[i].varugrupp]);
     };
     //
     return collector;
@@ -267,7 +267,7 @@ function allMenuBeverages() {
     var collector = [];
 
     for (i = 0; i < DB2.spirits.length; i++) {
-        collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+        collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
     };
 
     return collector;
@@ -277,6 +277,39 @@ function getOrder(table_id) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
             return DB.orders[i].item_id;
+        }
+    }
+}
+
+function getBeerInfoFromId(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == parseInt(id)) {
+            return [DB2.spirits[i].namn, DB2.spirits[i].producent, DB2.spirits[i].ursprunglandnamn, DB2.spirits[i].varugrupp, DB2.spirits[i].alkoholhalt, DB2.spirits[i].forpackning, DB2.spirits[i].prisinklmoms, DB2.spirits[i].stock]
+        }
+    };
+}
+
+function getWineInfoFromId(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == parseInt(id)) {
+            return [DB2.spirits[i].namn, DB2.spirits[i].argang, DB2.spirits[i].producent, DB2.spirits[i].varugrupp, DB2.spirits[i].ursprung, DB2.spirits[i].forpackning, DB2.spirits[i].stock]
+        }
+    };
+}
+
+function getSpiritInfoFromId(id) {
+    for (i = 0; i < DB2.spirits.length; i++) {
+        if (DB2.spirits[i].artikelid == parseInt(id)) {
+            return [DB2.spirits[i].namn, DB2.spirits[i].varugrupp, DB2.spirits[i].alkoholhalt, DB2.spirits[i].stock]
+        }
+    };
+}
+
+function getTypeFromId(id) {
+    var all = allBeveragesWithID();
+    for (i=0; i < all.length; i++) {
+        if (parseInt(all[i][0]) == parseInt(id)) {
+            return all[i][3];
         }
     }
 }
@@ -313,7 +346,7 @@ function allBeveragesOfType(type) {
 
     for (i = 0; i < DB2.spirits.length; i++) {
         if(DB2.spirits[i].varugrupp.includes(type)) {
-            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
         }
     };
     return collector;
@@ -324,7 +357,7 @@ function allBeveragesWithStrength(strength) {
 
     for (i = 0; i < DB2.spirits.length; i++) {
         if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
-            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms]);
+            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
         };
     };
     return collector;

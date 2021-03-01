@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
 
     'pics' : ['pic1'],              // keys for pictures
@@ -61,7 +61,19 @@ dict = {
         'sortWine': "Wine",
         'sortSpirits': "Spirits", 
         'orderHeader': "Order for table ",
-        'orderSubHeader': "Total cost: "
+        'orderSubHeader': "Total cost: ", 
+        'spirName': "Name: ",
+        'beerBrewery': "Brewery: ",
+        'beerCountry': "Country: ",
+        'spirType': "Type: ",
+        'spirStrength': "Strength: ",
+        'spirSize': "Size: ",
+        'beerPrice': "Price: ",
+        'wineYear': "Year: ",
+        'wineProducer': "Producer: ",
+        'wineGrape': "Grape: ",
+        'spirStock': "In stock: ",
+        'hideItem': "Hide/show on menu"
 
     },
     'sv' : {
@@ -101,7 +113,19 @@ dict = {
         'sortWine': "Vin",
         'sortSpirits': "Sprit", 
         'orderHeader': "Order för bord ",
-        'orderSubHeader': "Total kostnad: "
+        'orderSubHeader': "Total kostnad: ", 
+        'spirName': "Namn: ",
+        'beerBrewery': "Bryggeri: ",
+        'beerCountry': "Land: ",
+        'spirType': "Typ: ",
+        'spirStrength': "Alkoholhalt: ",
+        'spirSize': "Storlek: ",
+        'beerPrice': "Pris: ",
+        'wineYear': "Årgång: ",
+        'wineProducer': "Producent: ",
+        'wineGrape': "Druva: ",
+        'spirStock': "I lager: ", 
+        'hideItem': "Göm/ta fram på menyn"
 
     }
 }

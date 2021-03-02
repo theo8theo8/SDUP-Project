@@ -271,7 +271,9 @@ function showParticularMenu(menu) {
 
 function menuInfo(item) {
   var id;
-  if (item.includes(':')) {
+  if (typeof item === "number") {
+    id = item;
+  } else if (item.includes(':')) {
     id = getIdFromName(item.split(': ')[0]);
   } else {
     id = getIdFromName(item.slice(0, -1));
@@ -292,8 +294,7 @@ function menuInfo(item) {
     $('#menuInfo').append('<span>' + get_string('spirSize') + beerInfo[5] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('beerPrice') + beerInfo[6] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirStock') + beerInfo[7] + "<br>" + ' </span>');
-    $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button>');
-
+    endOfMenuInfo(id);
   } else if (type.includes("vin")) {
     var wineInfo = getWineInfoFromId(id);
     $('#menuInfo').append('<span>' + get_string('spirName') + wineInfo[0] + "<br>" + ' </span>');
@@ -303,16 +304,15 @@ function menuInfo(item) {
     $('#menuInfo').append('<span>' + get_string('wineGrape') + "??" + wineInfo[4] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirSize') + wineInfo[5] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirStock') + wineInfo[6] + "<br>" + ' </span>');
-    $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button>');
+    endOfMenuInfo(id);
   } else {
     var spiritInfo = getSpiritInfoFromId(id);
     $('#menuInfo').append('<span>' + get_string('spirName') + spiritInfo[0] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirType') + spiritInfo[1] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirStrength') + spiritInfo[2] + "<br>" + ' </span>');
     $('#menuInfo').append('<span>' + get_string('spirStock') + spiritInfo[3] + "<br>" + ' </span>');
-    $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button>');
+    endOfMenuInfo(id);
   }
-
   menuInfoCont.style.display = "block";
   var span = document.getElementsByClassName("close")[0];
 
@@ -329,6 +329,16 @@ function menuInfo(item) {
   console.log(id);
 }
 
+function endOfMenuInfo(id) {
+  $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button><br>');
+  $('#menuInfo').append('<input class = infoInput placeholder= -20/20 type="number" id="stock_change">');
+  $('#menuInfo').append('<button class="hideButton" onclick=editStock(' + id + ')>' + get_string('changeStock') + '</button>');
+}
+
+function editStock(id) {
+  changeStock(id, document.getElementById("stock_change").value);
+  menuInfo(id);
+}
 
 function hideItem(id) {
   for (i = 0; i < DB2.spirits.length; i++) {

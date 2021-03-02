@@ -206,7 +206,10 @@ function changeStock(id, amount) {
     console.log(amount);
     for (i = 0; i < DB2.spirits.length; i++) {
         if (DB2.spirits[i].artikelid == id) {
-            DB2.spirits[i].stock = Number(DB2.spirits[i].stock) + Number(amount)
+            DB2.spirits[i].stock = Number(DB2.spirits[i].stock) + Number(amount);
+            if (DB2.spirits[i].stock < 0) {
+                DB2.spirits[i].stock = 0;
+            }
         }
     }
     return false;

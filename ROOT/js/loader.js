@@ -352,14 +352,22 @@ function allBeveragesOfType(type) {
     return collector;
 }
 
-function allBeveragesWithStrength(strength) {
+function allBeveragesWithStrength(way, strength) {
     var collector = [];
-
-    for (i = 0; i < DB2.spirits.length; i++) {
-        if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
-            collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
+    if(way === "above") {
+        for (i = 0; i < DB2.spirits.length; i++) {
+                if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
+                    collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
+                };
+            };
+    }
+    if(way === "below") {
+        for (i = 0; i < DB2.spirits.length; i++) {
+            if (percentToNumber(DB2.spirits[i].alkoholhalt) < strength) {
+                collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
+            };
         };
-    };
+    }
     return collector;
 }
 

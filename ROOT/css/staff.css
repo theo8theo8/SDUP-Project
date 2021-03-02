@@ -159,9 +159,32 @@
 }
 
 .sortButton {
-    width:19%;
-    height: 7%;
-    font-size:150%; 
+    width:20%;
+    height: 2.5vw;
+    font-size:0.7vw; 
+    font-weight: bold;
+    margin: 2%;
+    background-color:#6d4423;
+    box-shadow: 0.2vw 0.2vw 0.5vw;
+    cursor: pointer;
+    outline:none;
+}
+
+.sortInput {
+    width:17%;
+    height: 2.2vw;
+    font-size:0.7vw; 
+    font-weight: bold;
+    margin: 3%;
+    background-color:#6d4423;
+    box-shadow: 0.2vw 0.2vw 0.5vw;
+    outline:none;
+}
+
+.bigSortButton {
+    width:43%;
+    height: 2.5vw;
+    font-size:1.2vw; 
     font-weight: bold;
     margin: 3%;
     background-color:#6d4423;

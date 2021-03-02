@@ -15,6 +15,8 @@ var nextNum = 1;
 var currentTableID = 0;
 var menuInfoCont = document.getElementById("menuInfoCont");
 var lastMenu = 'all';
+var currentFiltering = 'none';
+var alcoPercent = 0;
 
 container.addEventListener("touchstart", dragStart, false);
 container.addEventListener("touchend", dragEnd, false);
@@ -179,10 +181,17 @@ function showOrder(table_id) {
 }
 
 function addToOrder(item) {
+  
   console.log(item);
   if (currentTableID != 0) {
     for (var i=0; i < DB.orders.length; i++) {
         if (DB.orders[i].table == currentTableID) {
+
+          if(checkFullOrder(DB.orders[i].item_id))
+          {
+            return;
+          }
+
           var key;
           if (item.includes(':')) {
             key = getIdFromName(item.split(': ')[0]);
@@ -221,17 +230,36 @@ function removeFromOrder(item) {
 
 function addBasicMenu(){
   $('#menu').empty();
-  $('#menu').append('<button class="sortButton" id=sortAll onclick=showMenu()></button>');
-  $('#menu').append('<button class="sortButton" id=sortBeer onclick=showMenu("beer")></button>');
-  $('#menu').append('<button class="sortButton" id=sortWine onclick=showMenu("wine")></button>');
-  $('#menu').append('<button class="sortButton" id=sortSpirits onclick=showMenu("spirits")></button>');
+  switch (currentFiltering) {
+    case "cat":
+      $('#menu').append('<button class="sortButton" id=sortBack onclick=showMenu("back")></button>');
+      $('#menu').append('<button class="sortButton" id=sortAll onclick=showMenu()></button>');
+      $('#menu').append('<button class="sortButton" id=sortBeer onclick=showMenu("beer")></button>');
+      $('#menu').append('<button class="sortButton" id=sortWine onclick=showMenu("wine")></button>');
+      $('#menu').append('<button class="sortButton" id=sortSpirits onclick=showMenu("spirits")></button>');
+      break;
+    case "rest":
+      $('#menu').append('<button class="sortButton" id=sortBack onclick=showMenu("back")></button>');
+      $('#menu').append('<button class="sortButton" id=sortBelow onclick=showMenu("alcoBelow")></button>');
+      $('#menu').append('<input class="sortInput" type="number" id="alco_percent" min=1 max=100>');
+      $('#menu').append('<button class="sortButton" id=sortAbove onclick=showMenu("alcoAbove")></button>');
+      $('#menu').append('<button class="sortButton" id=sortTannins onclick=showMenu("tannin")></button>');
+      $('#menu').append('<button class="sortButton" id=sortGluten onclick=showMenu("gluten")></button>');
+      break;
+    default:
+      $('#menu').append('<button class="bigSortButton" id=sortCat onclick=showMenu("cat")></button>');
+      $('#menu').append('<button class="bigSortButton" id=sortRest onclick=showMenu("rest")></button>');
+      break;
+  }
   update_view();
 }
 
 function showParticularMenu(menu) {
+  if (menu.length == 0) {
+    $('#menu').append('<div class="orderSubHeader"><span style="font-weight:bold">' + get_string('sorryMessage') + ' </span>' + '</div>');
+  }
   for (var i = 0; i < menu.length; i++) {
     const element = menu[i];
-    console.log(element);
     if (element[4] === "0") {
       $('#menu').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
     } else {
@@ -322,19 +350,63 @@ function addEmptyOrder(id) {
 }
 
 function showMenu(type) {
-  lastMenu = type;
-  addBasicMenu();
   switch (type) {
     case 'beer':
+      addBasicMenu();
+      lastMenu = type;
       showParticularMenu(allBeveragesOfType("Öl"));
       break;
     case 'wine':
+      addBasicMenu();
+      lastMenu = type;
       showParticularMenu(allBeveragesOfType("vin"));
       break;
     case 'spirits':
-      showParticularMenu(allBeveragesWithStrength(20));
+      addBasicMenu();
+      lastMenu = type;
+      showParticularMenu(allBeveragesWithStrength("above", 20));
+      break;
+    case 'alcoAbove':
+      lastMenu = type;
+      if (document.getElementById("alco_percent") != null) {
+        alcoPercent = document.getElementById("alco_percent").value;
+      }
+      addBasicMenu();
+      showParticularMenu(allBeveragesWithStrength("above", alcoPercent));
+      break;
+    case 'alcoBelow':
+      lastMenu = type;
+      if (document.getElementById("alco_percent") != null) {
+        alcoPercent = document.getElementById("alco_percent").value;
+      }
+      addBasicMenu();
+      showParticularMenu(allBeveragesWithStrength("below", alcoPercent));
+      break;
+    case 'tannin':
+      addBasicMenu();
+      lastMenu = type;
+      showParticularMenu([]);
+      break;
+    case 'gluten':
+      addBasicMenu();
+      lastMenu = type;
+      showParticularMenu([]);
+      break;
+    case 'rest':
+      currentFiltering = "rest";
+      showMenu(lastMenu);
+      break;
+    case 'cat':
+      currentFiltering = "cat";
+      showMenu(lastMenu);
+      break;
+    case 'back':
+      currentFiltering = "none";
+      showMenu(allMenuBeverages());
       break;
     default:
+      addBasicMenu();
+      lastMenu = type;
       showParticularMenu(allMenuBeverages());
   }
 }
@@ -345,4 +417,12 @@ function updateLangStaff() {
 
 function notifySecurity() {
   console.log("Security notified!");
+}
+
+function checkFullOrder(dic) {
+  var total = 0;
+  for(var key in dic) {
+    total += dic[key];
+  }
+  return total == 10;
 }

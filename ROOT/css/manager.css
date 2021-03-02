@@ -1,3 +1,7 @@
+body {
+    background-color: #b7faf4;
+}
+
 .mgrHeader {
     padding: 10px 0px 10px 0px;
     height:50px;
@@ -5,153 +9,26 @@
 
 .mgrHeaderItem {
     width:calc(33.3% - 2px);
-    background-color: darkgray;
+    background-color: #3d2100;
     text-align: center;
     font-size: 20px;
     float:left;
-    padding: 10px 0px 10px 0px;
-    border-style:solid;
-    border-width: 1px;
-    border-color: gray;
+    padding: 16px 0px 16px 0px;
+    border: 1px solid black;
+    color:#c7a585;
     cursor: pointer;           
 }
 
 .mgrHeaderItem:hover {
-    background-color:gray;
-    border-color: rgb(32, 32, 32);
-}
-
-.mgrHead:active {
-    background-color: rgb(68, 68, 68);
-}
-
-.mgrMenuListItem {
-    width:calc(100% - 6px);
-    font-size:16px;
-    padding-top:10px;
-    padding-bottom:10px;
-    border-style:groove;
-    border-radius: 1px;
-    margin-top:-1px;
-    background-color:lightgray;
-}
-
-.mgrMenuListItem:hover {
-    background-color:darkgray;
-}
-
-#item-modal {
-    display:none;
-    position:fixed;
-    left:0px;
-    top:0px;   
-    width:100%;
-    height:100%;
-    overflow:auto;
-    background-color:rgba(0,0,0,0.4);
-    overflow-y:hidden;
-}
-
-#item-modal-inside {
-    display:none;
-    top:-20%;
-    background-color: white;
-    margin: 10% auto;
-    padding: 16px;
-    border: 1px solid lightgray;
-    width: fit-content;
-}
-
-#confirm-modal {
-    display:none;
-    position:fixed;
-    left:0px;
-    top:0px;
-    width:100%;
-    height:100%;
-    overflow:auto;
-    background-color:rgba(0,0,0,0.4);
-    overflow-y:hidden;
-}
-
-#confirm-modal-inside {
-    background-color: white;
-    margin: 15% auto;
-    padding: 16px;
-    border: 1px solid lightgray;
-    width: fit-content;
-    text-align: center;
-}
-
-.mgrInputLabel {
-    font-size:16px;
-}
-
-.mgrInput {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    display: inline-block;
-    box-sizing: border-box;
-    flex-grow: 0.5;
-}
-
-.modal-button {
-    padding: 12px 16px;
-    font-size:15px;
-    text-align:center;
-    outline: none;
-    border:solid;
-    background-color:lightgray;
-    border-color:gray;
-    border-width: 1px;
-    border-radius:6px;
-    margin-left: 10px;
-}
-
-.modal-button:hover {
-    background-color:gray;
-    border-color:dimgray;
-}
-
-.modal-button-red {
-    background-color:red;
-    border-color:firebrick;
-}
-
-.modal-button-red:hover {
-    background-color:firebrick;
-    border-color:maroon;
-}
-
-.modal-button-green {
-    background-color:limegreen;
-    border-color:green;
-}
-
-.modal-button-green:hover {
-    background-color:green;
-    border-color:darkgreen;
-}
-
-.modalX {
-    color: lightgray;
-    font-size: 40px;
-    float: right;
-}
-
-.modalX:hover {
-    color: black;
-    cursor: pointer;
+    background-color:#2f1900;
 }
 
 #mgrCategorySelect {
     width:100%;
     cursor: pointer;
-    background-color:lightgray;
-    border-color:darkgray;
+    background-color:#6d4423;
+    border-color:black;
+    color: #c7a585;
     padding: 10px;
     font-size: 20px;
 }
@@ -163,7 +40,145 @@
 .mgrCategory {
     width:100%;
     cursor: pointer;
-    background-color:lightgray;
+    background-color:#6d4423;
+    margin-top:-1px;
+    border: 1px solid black;
+    color: #c7a585;
     padding: 14px;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+#mgrContent {
+    border: 4px solid black;
+    background-color:#d6b687;
+    width:90%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.mgrMenuListItem {
+    width:98%;
+    font-size:16px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-style: groove;
+    border-radius: 1px;
+    border-color:#777;
+    margin:8px auto 8px auto;
+    box-shadow: 1px 1px 4px;
+    background-color:#add8e634;
+}
+
+.mgrMenuListItem:hover {
+    background-color:#add8e688;
+}
+
+#item-modal {
+    display:none;
+    position:fixed;
+    left:0px;
+    top:0px;   
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color:#00000066;
+    color:#3E2514;
+    overflow-y:hidden;
+}
+
+#item-modal-inside {
+    border-radius: 16px;
+    padding: 20px;
+    display:none;
+    top:-20%;
+    background-color: #a26539f1; 
+    margin: 10% auto;
+    padding: 16px;
+    width: fit-content;
+    box-shadow: 0 0 2px 1px #3E2514;
+}
+
+#confirm-modal {
+    display:none;
+    position:fixed;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color:#00000066;
+    overflow-y:hidden;
+}
+
+#confirm-modal-inside {
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #a26539f1;
+    margin: 15% auto;
+    padding: 16px;
+    width: fit-content;
+    text-align: center;
+    box-shadow: 0 0 2px 1px #3E2514;
+}
+
+.mgrInputLabel {
+    font-size:16px;
+}
+
+.mgrInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color:#d6b687;
+    border: 1px solid #3E2514;
+    border-radius: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.modal-button {
+    color: #e8cdba;
+    padding: 12px 16px;
+    font-size:15px;
+    text-align:center;
+    outline: none;
+    background-color:#4d4d4d;
+    border: 1px solid #333;
+    border-radius:6px;
+    margin-left: 10px;
+}
+
+.modal-button:hover {
+    background-color:#333333;
+    border-color:#1f1f1f;
+}
+
+.modal-button-red {
+    background-color:#7a0000;
+    border-color:#470000;
+}
+
+.modal-button-red:hover {
+    background-color:#470000;
+    border-color:#3d0000;
+}
+
+.modal-button-brown {
+    background-color:#3d2100;
+    border-color:#291600;
+}
+
+.modal-button-brown:hover {
+    background-color:#291600;
+    border-color:#130a00;
+}
+
+.modalX {
+    font-size: 40px;
+    float: right;
+}
+
+.modalX:hover {
+    color: black;
+    cursor: pointer;
 }

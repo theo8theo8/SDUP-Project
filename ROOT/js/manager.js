@@ -22,7 +22,7 @@ function addStock() {
         "alkoholhalt":alcContent,
         "stock":stock
     };
-    console.log(beverage);
+    // console.log(beverage);
     addBeverage(beverage);
     closeItemModal();
     loadMgrEditStock();
@@ -93,7 +93,7 @@ function confirmStock() {
     $('#confirm-modal-content-inside').append('<input id="mgrRestockCount" class="mgrInput" type="number"></input>');
 
     $('#confirm-modal-content-inside').append('<button id="mgrCancel" class="modal-button" onclick="closeConfirmModal()"></button>');
-    $('#confirm-modal-content-inside').append('<button id="mgrRestockItem" class="modal-button modal-button-green" onclick="replenishStock(' + id + ')"></button>');
+    $('#confirm-modal-content-inside').append('<button id="mgrRestockItem" class="modal-button modal-button-brown" onclick="replenishStock(' + id + ')"></button>');
     update_view();
 }
 
@@ -110,7 +110,7 @@ function mgrListClick(item) {
     $('#item-modal-content-inside').append('<p> <span id="mgrItemAlcContent"></span>: ' + info.alkoholhalt + '</p>');
     $('#item-modal-content-inside').append('<p> <span id="mgrItemSupplier"></span>: ' + info.leverantor + '</p>');
 
-    $('#item-modal-content-inside').append('<button class="modal-button modal-button-green" id="mgrRestockItem" onclick="confirmStock(this)"></button>');
+    $('#item-modal-content-inside').append('<button class="modal-button modal-button-brown" id="mgrRestockItem" onclick="confirmStock(this)"></button>');
     $('#item-modal-content-inside').append('<button class="modal-button modal-button-red" id="mgrRemoveItem" onclick="confirmDelete(this)"></button>');
     update_view();
 }
@@ -147,7 +147,7 @@ function loadMgrAddItem() {
     //
 
     // $('#item-modal-content-inside').append('<button class="modal-button modal-button-red" id="mgrCancel" onclick="closeItemModal()"></button>');
-    $('#item-modal-content-inside').append('<button class="modal-button modal-button-green" id="mgrAdd" onclick="addStock(this)">abc</button>');
+    $('#item-modal-content-inside').append('<button class="modal-button modal-button-brown" id="mgrAdd" onclick="addStock(this)">abc</button>');
     update_view();
 }
 

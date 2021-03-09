@@ -177,12 +177,34 @@ function showOrder(table_id) {
     const item = getNameFromId(key);
     $('#order').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + item + ": " + order[key] +  ' </span>' + '<button class="removeFromOrderButton" onclick="removeFromOrder(this.parentElement.children[0].innerText)">-</button> <button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
   }
+  $('#order').append('<button class="bigSortButton" onclick=sendOrder("console")>' + get_string('finishOrder') + '</button>');
+  $('#order').append('<button class="bigSortButton" onclick=sendOrder("nocon")>' + get_string('deleteOrder') + '</button>');
   currentTableID = table_id;
 }
 
+function sendOrder(con) {
+  if (currentTableID != 0) {
+    for (var i=0; i < DB.orders.length; i++) {
+        if (DB.orders[i].table == currentTableID) {
+          if(con === "console") {
+            console.log("---ORDER-START---");
+            console.log("Table-id: " + currentTableID);
+            console.log(DB.orders[i].item_id);
+            console.log("---ORDER-END---");
+          } else {
+            console.log("---DEL-ORDER-START---");
+            console.log("Table-id: " + currentTableID);
+            console.log("---DEL-ORDER-END---");
+          }
+          DB.orders[i].item_id = {};
+          showOrder(currentTableID);
+          return;
+        }
+    }
+  }
+}
+
 function addToOrder(item) {
-  
-  console.log(item);
   if (currentTableID != 0) {
     for (var i=0; i < DB.orders.length; i++) {
         if (DB.orders[i].table == currentTableID) {

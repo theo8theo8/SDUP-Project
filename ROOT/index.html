@@ -11,10 +11,19 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/Login.js"></script>
 
+    <script type="text/javascript" src="js/ModelFunctions.js"></script>
     <script type="text/javascript" src="js/Beverages.js"></script>
     <script type="text/javascript" src="js/DBLoaded.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
 
+    <script type="text/javascript" src="js/manager.js"></script>
+    
+    <script type="text/javascript" src="js/user.js"></script>
+    
+    
+    <link rel="stylesheet" href="css/manager.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/staff.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="img/boat_icon.png">
 
@@ -50,9 +59,75 @@
         <button class="button" id=submit  onclick=user_login()>
     </div>
 </div>
-<div class="main-view" id="manager-view">Manager view</div>
-<div class="main-view" id="bartender-view">Bartender view</div>
-<div class="main-view" id="user-view">User view</div>
+<!-- Add all manager view elements inside this div-->
+<div class="main-view" id="manager-view">
+    <div class="mgrHeader">
+        <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()"></div>
+        <div class="mgrHeaderItem" id="logOut" onclick="changeView('login-view')"></div>
+        <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()"></div>
+    </div>
+    <div id="categoryContainer" style="margin-bottom: 10px;">
+        <button id="mgrCategorySelect" onclick="categoryDropdown()"></button>
+        <div id="categorySelectDropdown"></div>
+    </div>
+    <div id="item-modal">
+        <div id="confirm-modal">
+            <div id="confirm-modal-inside">
+                <div id="confirm-modal-content-inside"></div>
+            </div>
+        </div>
+        <div id="item-modal-inside">
+            <span class="modalX" onclick="closeItemModal()">&times;</span>
+            <div id="item-modal-content-inside" ></div>
+        </div>             
+    </div>
+    <div id="mgrContent"></div>
+</div>
+<!-- Add all bartender view elements inside this div-->
+<div class="main-view" id="bartender-view">
+    <div id=heading>
+        <button class="securityButton" id=notSec onclick=notifySecurity()>Security!</button>
+        The Flying Dutchman 
+        <img id="pic1" style="float:right; width: 8vw; height: 4vw; margin: 1%;" src="" onclick="change_lang()">
+        <button class="logoutButton" id=logOut onclick=logOut()>
+    </div> 
+ 
+    <div id="bordskarta">
+        <button class="tableButton" id=twoPtableBut onclick=addTable()>
+    </div>
+
+    <div id="menuInfoCont" class="modal">
+        <div id="menuInfo"></div>
+    </div>
+    
+    <div id="order"></div>
+    <div id="menu"></div>
+</div>
+<!-- Add all user view elements inside this div-->
+<div class="main-view" id="user-view">
+    <div id=lang>
+        <img id="pic1" style="width: 5vw; height: 2.5vh;" src="" onclick="change_lang()">
+    </div>
+
+    <div class="order">
+        <div>
+            Beställning
+        </div>
+        <div class="order-box" id="order">
+
+        </div>
+    </div>
+
+    <div class="order">
+        <div>
+            Meny
+        </div>
+        <div class="order-box" id="menu">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/staff.js"></script>
 </body>
 
 </html>

@@ -10,19 +10,19 @@ function user_login() {
             console.log("Valid username and password")
             switch (details[1]) {
                 case '0': //manager
-                window.location.href = "manager.html";
+                changeView("manager-view");
                 break;
 
                 case '1': //bartender
-                window.location.href = "staff.html";
+                changeView("staff-view");
                 break;
                 
                 case '2': //waiter/waitress
-                window.location.href = "staff.html";
+                changeView("staff-view");
                 break;
 
                 case '3': //VIP customer
-                window.location.href = "vipuser.html"; 
+                changeView("user-view");
                 break;
 
                 default:
@@ -39,9 +39,9 @@ function user_login() {
 }
 
 function guest_login() { //Ordinary user
-    window.location.href = "user.html";
+    changeView("user-view");
 }
 
 function logOut() {
-    window.location.href = "index.html";
+    changeView("login-view");
 }

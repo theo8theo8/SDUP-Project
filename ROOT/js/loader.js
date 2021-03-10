@@ -227,7 +227,7 @@ function changePrice(id, newPrice) {
 }
 
 // =====================================================================================================
-// Removes a beverage
+// Adds a beverage
 //
 function addBeverage(beverage) {
     DB2.spirits.push(beverage);

@@ -13,10 +13,7 @@ body {
 }
 
 #login-view {
-  background-image: url('../img/ship.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #E8CDBA;
+  color: #774725;
   padding: 10px 10px 10px 10px;
   align-self: center;
   font-family: 'Ubuntu', sans-serif;

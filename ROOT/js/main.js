@@ -28,6 +28,8 @@ function update_view() {
 // loading.
 //
 $(document).ready(function() {
+    loadMgrEditStock();
+    loadCategoryDropdown();
     update_view();
     $("#login-view").css("display","block");
 })

@@ -175,11 +175,44 @@ function showOrder(table_id) {
   $('#order').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('orderSubHeader') /*"Total cost: "*/ + getTotalCost(order) + "kr" +  ' </span>' + '</div>');
   for(let key in order) {
     const item = getNameFromId(key);
-    $('#order').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + item + ": " + order[key] +  ' </span>' + '<button class="removeFromOrderButton" onclick="removeFromOrder(this.parentElement.children[0].innerText)">-</button> <button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
+    if (item === "null") {
+      removeFromOrderWithId(parseInt(key));
+    } else {
+      $('#order').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + item + ": " + order[key] +  ' </span>' + '<button class="removeFromOrderButton" onclick="removeFromOrder(this.parentElement.children[0].innerText)">-</button> <button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
+    }
   }
   $('#order').append('<button class="bigSortButton" onclick=sendOrder("console")>' + get_string('finishOrder') + '</button>');
   $('#order').append('<button class="bigSortButton" onclick=sendOrder("nocon")>' + get_string('deleteOrder') + '</button>');
   currentTableID = table_id;
+}
+
+function outOfStock() {
+  var oOS = false;
+  for (var i=0; i < DB.orders.length; i++) {
+    if (DB.orders[i].table == currentTableID) {
+      var dic = DB.orders[i].item_id;
+      Object.entries(dic).forEach(([key, value]) => {
+        var stock = parseInt(getStockFromId(key));
+        if (stock < value) {
+          oOS = true;
+          $('#order').prepend('<span style="color:red">' + get_string('outOfStock') + getNameFromId(key) + ' </span></br>');
+          console.log("Not enough in stock for: " + getNameFromId(key));
+        }
+      })
+    }
+  }
+  return oOS;
+}
+
+function reviseStock() {
+  for (var i=0; i < DB.orders.length; i++) {
+    if (DB.orders[i].table == currentTableID) {
+      var dic = DB.orders[i].item_id;
+      Object.entries(dic).forEach(([key, value]) => {
+        changeStock(key, -value);
+      })
+    }
+  }
 }
 
 function sendOrder(con) {
@@ -187,10 +220,14 @@ function sendOrder(con) {
     for (var i=0; i < DB.orders.length; i++) {
         if (DB.orders[i].table == currentTableID) {
           if(con === "console") {
+            if (outOfStock() == true) {
+              return;
+            }
             console.log("---ORDER-START---");
             console.log("Table-id: " + currentTableID);
             console.log(DB.orders[i].item_id);
             console.log("---ORDER-END---");
+            reviseStock();
           } else {
             console.log("---DEL-ORDER-START---");
             console.log("Table-id: " + currentTableID);
@@ -198,6 +235,7 @@ function sendOrder(con) {
           }
           DB.orders[i].item_id = {};
           showOrder(currentTableID);
+          showMenu(lastMenu);
           return;
         }
     }
@@ -226,6 +264,17 @@ function addToOrder(item) {
             DB.orders[i].item_id[key] = 1;
           }
           showOrder(currentTableID);
+          return;
+        }
+      }
+  }
+}
+
+function removeFromOrderWithId(id) {
+  if (currentTableID != 0) {
+    for (var i=0; i < DB.orders.length; i++) {
+        if (DB.orders[i].table == currentTableID) {
+          delete DB.orders[i].item_id[id];
           return;
         }
       }
@@ -282,11 +331,16 @@ function showParticularMenu(menu) {
   }
   for (var i = 0; i < menu.length; i++) {
     const element = menu[i];
-    if (element[4] === "0") {
-      $('#menu').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
-    } else {
+    if (element[4] === "1") {
       $('#menu').append('<div class="hiddenMenuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
-
+    } else if(parseInt(element[2]) < 5) {
+      if(parseInt(element[2]) == 0) {
+        $('#menu').append('<div class="noStockMenuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
+      } else {
+        $('#menu').append('<div class="lowMenuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
+      }
+    } else {
+      $('#menu').append('<div class="menuItem"> <span style="font-weight:bold; cursor:pointer" onclick="menuInfo(this.parentElement.children[0].innerText)">' + element[0] + ' </span>' + element[3] + '<button class="addToOrderButton" onclick="addToOrder(this.parentElement.children[0].innerText)">+</button> </div>');
     }
   }
 }
@@ -355,11 +409,22 @@ function endOfMenuInfo(id) {
   $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button><br>');
   $('#menuInfo').append('<input class = infoInput placeholder= -20/20 type="number" id="stock_change">');
   $('#menuInfo').append('<button class="hideButton" onclick=editStock(' + id + ')>' + get_string('changeStock') + '</button>');
+  $('#menuInfo').append('<input class = infoInput placeholder= 75 type="number" id="price_change">');
+  $('#menuInfo').append('<button class="hideButton" onclick=editPrice(' + id + ')>' + get_string('changePrice') + '</button>');
 }
 
 function editStock(id) {
   changeStock(id, document.getElementById("stock_change").value);
   menuInfo(id);
+  showMenu(lastMenu);
+  showOrder(currentTableID);
+}
+
+function editPrice(id) {
+  changePrice(id, document.getElementById("price_change").value);
+  menuInfo(id);
+  showMenu(lastMenu);
+  showOrder(currentTableID);
 }
 
 function hideItem(id) {
@@ -457,4 +522,11 @@ function checkFullOrder(dic) {
     total += dic[key];
   }
   return total == 10;
+}
+
+function updateBartenderView() {
+  if (currentTableID != 0) {
+    showOrder(currentTableID);
+  }
+  showMenu(lastMenu);
 }

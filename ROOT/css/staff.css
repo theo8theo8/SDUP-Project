@@ -124,6 +124,28 @@
     box-shadow: 0.2vw 0.2vw 0.5vw;
 }
 
+.lowMenuItem {
+    width:88%;
+    font-size:1.1vw;
+    padding:0.3vw;
+    border: ridge rgb(126, 126, 126);
+    margin:0.8vw;
+    background-color:rgb(255, 145, 0);
+    overflow: hidden;
+    box-shadow: 0.2vw 0.2vw 0.5vw;
+}
+
+.noStockMenuItem {
+    width:88%;
+    font-size:1.1vw;
+    padding:0.3vw;
+    border: ridge rgb(126, 126, 126);
+    margin:0.8vw;
+    background-color:rgb(255, 0, 0);
+    overflow: hidden;
+    box-shadow: 0.2vw 0.2vw 0.5vw;
+}
+
 .menuHeader {
     padding-top: 0.5vw;;
     padding-bottom: 0.2vw;

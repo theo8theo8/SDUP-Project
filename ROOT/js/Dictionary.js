@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice', , 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
 
     'pics' : ['pic1'],              // keys for pictures
@@ -86,7 +86,12 @@ dict = {
         'changePrice': "New price", 
         'finishOrder': "Send order", 
         'deleteOrder': "Remove order", 
-        'outOfStock': "WARNING: We don't have enough of: "
+        'outOfStock': "WARNING: We don't have enough of: ",
+        'payBar': "Pay at bar",
+        'payTable': "Pay at table",
+        'payBarOrder': "Order received and will be delivered after payment at bar",
+        'payTableOrder': "Order received and will arrive shortly",
+        'userWelcome': "Welcome "
 
     },
     'sv' : {
@@ -151,7 +156,13 @@ dict = {
         'changeStock': "Nytt pris", 
         'finishOrder': "Skicka order", 
         'deleteOrder': "Ta bort order", 
-        'outOfStock': "VARNING: Vi har inte tillräckligt av: "
+        'outOfStock': "VARNING: Vi har inte tillräckligt av: ",
+        'payBar': "Betala vid baren",
+        'payTable': "Betala vid bordet",
+        'payBarOrder': "Beställningen har mottagits och serveras efter betalning i baren",
+        'payTableOrder': "Beställningen har mottagits och kommer snart",
+        'userWelcome': "Välkommen "
+
 
     }
 }

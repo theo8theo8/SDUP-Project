@@ -1,3 +1,5 @@
+loggedUser = [];
+
 function user_login() {
 
     var username = document.getElementById("username_label").value;
@@ -22,6 +24,7 @@ function user_login() {
                 break;
 
                 case '3': //VIP customer
+                loggedUser = details;
                 changeView("user-view");
                 break;
 
@@ -43,5 +46,6 @@ function guest_login() { //Ordinary user
 }
 
 function logOut() {
+    loggedUser = [];
     changeView("login-view");
 }

@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
 
     'pics' : ['pic1'],              // keys for pictures
@@ -61,7 +61,12 @@ dict = {
         'sortWine': "Wine",
         'sortSpirits': "Spirits", 
         'orderHeader': "Order for table ",
-        'orderSubHeader': "Total cost: "
+        'orderSubHeader': "Total cost: ",
+        'payBar': "Pay at bar",
+        'payTable': "Pay at table",
+        'payBarOrder': "Order received and will be delivered after payment at bar",
+        'payTableOrder': "Order received and will arrive shortly",
+        'userWelcome': "Welcome "
 
     },
     'sv' : {
@@ -100,8 +105,15 @@ dict = {
         'sortBeer': "Öl",
         'sortWine': "Vin",
         'sortSpirits': "Sprit", 
-        'orderHeader': "Order för bord ",
-        'orderSubHeader': "Total kostnad: "
+        'orderHeader': "Beställning för bord ",
+        'orderSubHeader': "Total kostnad: ",
+        'payBar': "Betala vid baren",
+        'payTable': "Betala vid bordet",
+        'payBarOrder': "Beställningen har mottagits och serveras efter betalning i baren",
+        'payTableOrder': "Beställningen har mottagits och kommer snart",
+        'userWelcome': "Välkommen "
+
+
 
     }
 }

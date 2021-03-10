@@ -55,8 +55,8 @@ function userDetails(userName) {
         DB.users[userIndex].user_id,
         DB.users[userIndex].username,
 
-        //DB.users[userIndex].first_name,
-        //DB.users[userIndex].last_name,
+        DB.users[userIndex].first_name,
+        DB.users[userIndex].last_name,
         //DB.users[userIndex].email,
         
 

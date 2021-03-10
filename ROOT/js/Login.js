@@ -1,3 +1,5 @@
+loggedUser = [];
+
 function user_login() {
 
     var username = document.getElementById("username_label").value;
@@ -22,7 +24,8 @@ function user_login() {
                 break;
 
                 case '3': //VIP customer
-                window.location.href = "vipuser.html"; 
+                window.location.href = "vipuser.html";
+                loggedUser = details;
                 break;
 
                 default:
@@ -44,4 +47,5 @@ function guest_login() { //Ordinary user
 
 function logOut() {
     window.location.href = "index.html";
+    loggedUser = [];
 }

@@ -1,6 +1,36 @@
 var DB = {
     "users": [
         {
+            "user_id": "1337",
+            "credentials": "3",
+            "password": "user",
+            "username": "user",
+            "first_name": "Jory",
+            "last_name": "Assies",
+            "email": "jory.assies@it.uu.se",
+            "phone": "0704811411"
+        },
+        {
+            "user_id": "1338",
+            "credentials": "1",
+            "password": "bartender",
+            "username": "bartender",
+            "first_name": "Jory",
+            "last_name": "Assies",
+            "email": "jory.assies@it.uu.se",
+            "phone": "0704811411"
+        },
+        {
+            "user_id": "1338",
+            "credentials": "3",
+            "password": "user",
+            "username": "user",
+            "first_name": "Jory",
+            "last_name": "Assies",
+            "email": "jory.assies@it.uu.se",
+            "phone": "0704811411"
+        },
+        {
             "user_id": "2",
             "credentials": "0",
             "password": "b690bc2447d40ea8a6f78345eb979a28",
@@ -879,6 +909,10 @@ var DB = {
     }],
     "account": [
         {
+            "user_id": "1337",
+            "creditSEK" : "30000"
+        },
+        {
             "user_id": "2",
             "creditSEK" : "300"
         },
@@ -1186,7 +1220,7 @@ var DB = {
             "Ypos": "430"
         }
     ],
-    "orders": [
+    "orders": [   //ordertyp 0, 1, 2
         {   
             "table": 1,
             "item_id": {"1206":3}

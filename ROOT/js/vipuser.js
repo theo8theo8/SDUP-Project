@@ -1,8 +1,11 @@
 var currentTableID = 3;
 var orderLock = 0;
+//var loggedUser = ["user", "user", "user_id", "username", "firstname", "lastname", "email", "account"];
 
 showMenu();
 showOrder(currentTableID);
+welcomeUser();
+displayBalance();
 
 function showMenu(type) {
     addBasicMenu();
@@ -115,6 +118,21 @@ function payTable() {
     }
 }
 
+function welcomeUser() {
+    //$( '#userWelcome').append('<span style="font-weight:bold">' + hej + '</span>');
+    //$('#userWelcome').append($('<span>').text("hej"));
+    //$("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
+    $("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
+}
+
+function displayBalance() {
+    $("#balance span").empty();
+    $("#balance span").append(loggedUser[7]);
+    //$("#balance").append($("<span>").text(loggedUser[7]));
+}
+
 function updateLangStaff() {
     showOrder(currentTableID);
+    welcomeUser();
+    displayBalance();
 }

@@ -16,11 +16,11 @@ function user_login() {
                 break;
 
                 case '1': //bartender
-                changeView("staff-view");
+                changeView("bartender-view");
                 break;
                 
                 case '2': //waiter/waitress
-                changeView("staff-view");
+                changeView("bartender-view");
                 break;
 
                 case '3': //VIP customer

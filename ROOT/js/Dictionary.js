@@ -11,10 +11,10 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice', , 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'userlogOut', 'mgrlogOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice', , 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
 
-    'pics' : ['pic1'],              // keys for pictures
+    'pics' : ['pic1','pic2','pic3'],              // keys for pictures
                                     // pictures have to be
                                     // handled in a special way.
 
@@ -29,6 +29,8 @@ dict = {
         'customers': "Login",
         'inlog' : "Staff & Patrons",  
         'pic1' : "img/uk.png",
+        'pic2' : "img/uk.png",
+        'pic3' : "img/uk.png",
         'username_label' : "Username:",
         'password_label' : "Password:", 
         'username_label2' : "Username:",
@@ -56,6 +58,8 @@ dict = {
         'wrong_creds': "Wrong password or username",
         'twoPtableBut' : "Create a table", 
         'logOut' : "Log out",
+        'userlogOut' : "Log out",
+        'mgrlogOut' : "Log out",
         'sortAll': "All",
         'sortBeer': "Beer",
         'sortWine': "Wine",
@@ -100,6 +104,8 @@ dict = {
         'customers': "Inloggning",
         'inlog' : "Personal & Stamgäster",  
         'pic1' : "img/sv.png",
+        'pic2' : "img/sv.png",
+        'pic3' : "img/sv.png",
         'username_label' : "Användarnamn",
         'password_label' : "Lösenord",
         'guest_order' : "Beställ vid bordet", 
@@ -126,6 +132,8 @@ dict = {
         'wrong_creds': "Felaktigt lösenord eller användarnamn",
         'twoPtableBut': "Skapa ett bord", 
         'logOut' : "Logga ut",
+        'userlogOut' : "Logga ut",
+        'mgrlogOut' : "Logga ut",
         'sortAll': "Alla",
         'sortBeer': "Öl",
         'sortWine': "Vin",

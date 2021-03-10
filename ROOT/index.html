@@ -18,7 +18,6 @@
 
     <script type="text/javascript" src="js/manager.js"></script>
     
-    <script type="text/javascript" src="js/user.js"></script>
     
     
     <link rel="stylesheet" href="css/manager.css">
@@ -36,6 +35,7 @@
             $('#'+view).css("display","block");
             //Gör detta för att det ska uppdateras från förändringar i manager
             updateBartenderView();
+            welcomeUser();
         }
 
     </script>
@@ -63,7 +63,7 @@
 <div class="main-view" id="manager-view">
     <div class="mgrHeader">
         <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()"></div>
-        <div class="mgrHeaderItem" id="logOut" onclick="changeView('login-view')"></div>
+        <div class="mgrHeaderItem" id="mgrlogOut" onclick="changeView('login-view')"></div>
         <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()"></div>
     </div>
     <div id="categoryContainer" style="margin-bottom: 10px;">
@@ -88,7 +88,7 @@
     <div id=heading>
         <button class="securityButton" id=notSec onclick=notifySecurity()>Security!</button>
         The Flying Dutchman 
-        <img id="pic1" style="float:right; width: 8vw; height: 4vw; margin: 1%;" src="" onclick="change_lang()">
+        <img id="pic2" style="float:right; width: 8vw; height: 4vw; margin: 1%;" src="" onclick="change_lang()">
         <button class="logoutButton" id=logOut onclick=logOut()>
     </div> 
  
@@ -105,27 +105,31 @@
 </div>
 <!-- Add all user view elements inside this div-->
 <div class="main-view" id="user-view">
+    <div id="userWelcome"><span></span></div>
+    <div id="balance"><span></span></div>
+
+
     <div id=lang>
-        <img id="pic1" style="width: 5vw; height: 2.5vh;" src="" onclick="change_lang()">
+        <img id="pic3" style="width: 5vw; height: 2.5vh;" src="" onclick="change_lang()">
+        <button class="logoutButton" id=userlogOut onclick=logOut()></button>
     </div>
 
     <div class="order">
         <div>
             Beställning
         </div>
-        <div class="order-box" id="order">
-
-        </div>
+        <div class="order-box" id=userorder></div>
+        <button class="sortButton" id="payBar" onClick=payBar()></button>
+        <button class="sortButton" id="payTable" onClick=payTable()></button>
     </div>
 
     <div class="order">
         <div>
             Meny
         </div>
-        <div class="order-box" id="menu">
-
-        </div>
+        <div class="order-box" id=usermenu></div>
     </div>
+    <script type="text/javascript" src="js/vipuser.js"></script>
 </div>
 <script type="text/javascript" src="js/staff.js"></script>
 </body>

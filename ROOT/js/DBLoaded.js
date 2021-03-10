@@ -21,20 +21,10 @@ var DB = {
             "phone": "0704811411"
         },
         {
-            "user_id": "1338",
-            "credentials": "3",
-            "password": "user",
-            "username": "user",
-            "first_name": "Jory",
-            "last_name": "Assies",
-            "email": "jory.assies@it.uu.se",
-            "phone": "0704811411"
-        },
-        {
             "user_id": "2",
             "credentials": "0",
-            "password": "b690bc2447d40ea8a6f78345eb979a28",
-            "username": "jorass",
+            "password": "manager",
+            "username": "manager",
             "first_name": "Jory",
             "last_name": "Assies",
             "email": "jory.assies@it.uu.se",

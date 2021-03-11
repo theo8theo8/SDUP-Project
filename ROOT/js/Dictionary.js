@@ -195,6 +195,7 @@ function change_lang() {
     } else {language = 'en'};
     update_view();
     updateLangStaff();
+    welcomeUser();
 }
 
 // ==========================================================================

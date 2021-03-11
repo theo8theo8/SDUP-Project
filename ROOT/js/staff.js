@@ -510,6 +510,7 @@ function showMenu(type) {
 
 function updateLangStaff() {
   showOrder(currentTableID);
+  showAccountBox();
 }
 
 function notifySecurity() {
@@ -529,4 +530,24 @@ function updateBartenderView() {
     showOrder(currentTableID);
   }
   showMenu(lastMenu);
+  showAccountBox();
+}
+
+function showAccountBox() {
+  $('#account').empty();
+  $('#account').append('<div class="orderSubHeader"><span style="font-weight:bold">' + get_string('addToVip') + ' </span>' + '</div>');
+  $('#account').append('<input class = accountInput placeholder= username type="text" id="account_usr">');
+  $('#account').append('<input class = accountInput placeholder= 500 type="number" id="account_amount">');
+  $('#account').append('<button class="accountButton" onclick=editAccount()>' + get_string('changeCash') + '</button>');
+  
+}
+
+function editAccount(id) {
+  var usrName = document.getElementById("account_usr").value;
+  var amount = document.getElementById("account_amount").value;
+  if (amount > 0) {
+    if (increaseBalance(usrName, amount) === "worked") {
+      console.log("Balance increased for " + usrName + " by " + amount + "kr");
+    }
+  }
 }

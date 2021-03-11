@@ -227,7 +227,7 @@ function changePrice(id, newPrice) {
 }
 
 // =====================================================================================================
-// Removes a beverage
+// Adds a beverage
 //
 function addBeverage(beverage) {
     DB2.spirits.push(beverage);
@@ -394,6 +394,24 @@ function allBeveragesWithStrength(way, strength) {
         };
     }
     return collector;
+}
+
+function increaseBalance(userName, newAmount) {
+    var userID;
+
+    for (i = 0; i < DB.users.length; i++) {
+        if (DB.users[i].username == userName) {
+            userID = DB.users[i].user_id;
+        };
+    };
+
+    for (i = 0; i < DB.account.length; i++) {
+        if (DB.account[i].user_id == userID) {
+            DB.account[i].creditSEK = DB.account[i].creditSEK + Number(newAmount); 
+            return "worked";  
+        };
+    };
+    return "fail";
 }
 
 // =====================================================================================================

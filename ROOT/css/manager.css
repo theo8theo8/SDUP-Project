@@ -8,7 +8,8 @@ body {
 }
 
 .mgrHeaderItem {
-    width:calc(33.3% - 2px);
+    width:calc(25% - 2px);
+    height:24px;
     background-color: #3d2100;
     text-align: center;
     font-size: 20px;
@@ -17,6 +18,10 @@ body {
     border: 1px solid black;
     color:#c7a585;
     cursor: pointer;           
+}
+
+.mgrHeaderItemHalf {
+    width:calc(12.5% - 2px);
 }
 
 .mgrHeaderItem:hover {

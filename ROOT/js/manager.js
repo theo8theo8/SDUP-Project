@@ -1,5 +1,46 @@
 // Todo: add comments and function descriptors
 
+redoQueue = [];
+undoQueue = [];
+
+function addUndo(func) {
+    undoQueue.push(func);
+    return;
+}
+
+function addRedo(func) {
+    redoQueue.push(func);
+    return;
+}
+
+function clearRedo() {
+    redoQueue = [];
+}
+
+function undo() {
+    let func = undoQueue.pop();
+    if (func != undefined) {
+        addRedo(func);
+        func.undo();
+    }
+    return;
+}
+
+function redo() {
+    let func = redoQueue.pop();
+    if (func != undefined) {
+        addUndo(func);
+        func.redo();
+    } 
+    return;
+}
+
+function addStockRefresh(beverage) {
+    addBeverage(beverage);
+    loadMgrEditStock();
+    loadCategoryDropdown();
+}
+
 function addStock() {
     let id = Math.floor(Math.random() * 1000000) + 1;
     let name = $('#stockName').val();
@@ -23,24 +64,46 @@ function addStock() {
         "stock":stock
     };
     // console.log(beverage);
-    addBeverage(beverage);
     closeItemModal();
-    loadMgrEditStock();
-    loadCategoryDropdown();
+    
+    clearRedo();
+    let undoRedo = {
+        undo : function() {deleteStockRefresh(id)},
+        redo : function() {addStockRefresh(beverage)}
+    };
+    addUndo(undoRedo);
+    addStockRefresh(beverage);
 }
 
 function replenishStock(id) {
-    count = $('#mgrRestockCount').val();
+    let count = $('#mgrRestockCount').val();
+    clearRedo();
+    let undoRedo = {
+        undo : function() {changeStock(id, -count)},
+        redo : function() {changeStock(id, count)}
+    };
+    addUndo(undoRedo);
     changeStock(id, count);
     closeItemModal();
     update_view();
 }
 
-function deleteStock(id) {
-    closeItemModal();
+function deleteStockRefresh(id) {
     removeBeverage(id);
     loadMgrEditStock();
     loadCategoryDropdown();
+}
+
+function deleteStock(id) {
+    closeItemModal();
+    let beverage = beverageInfo(id);
+    clearRedo();
+    let undoRedo = {
+        undo : function() {addStockRefresh(beverage)},
+        redo : function() {deleteStockRefresh(id)}
+    };
+    addUndo(undoRedo);
+    deleteStockRefresh(id);
 }
 
 function closeItemModal() {
@@ -115,9 +178,14 @@ function mgrListClick(item) {
     update_view();
 }
 
+function sortStock(a, b) {
+    if (parseInt(a[0]) > parseInt(b[0])) return 1;
+    else return -1;
+}
+
 function loadMgrEditStock() {
     $('#mgrContent').empty();
-    let a = allBeveragesWithID();
+    let a = allBeveragesWithID().sort(sortStock);
     for (let i = 0; i < a.length && i < 100; i++) {
         const element = a[i];
         $('#mgrContent').append('<div class="mgrMenuListItem" onclick="mgrListClick(this)"><span class="idSpan" style="font-weight:bold">' + element[0] + '</span> ' + element[1] + '</div');

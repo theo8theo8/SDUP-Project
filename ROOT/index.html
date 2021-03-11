@@ -64,6 +64,8 @@
     <div class="mgrHeader">
         <div class="mgrHeaderItem" id="mgrHeaderEdit" onclick="loadMgrAddItem()"></div>
         <div class="mgrHeaderItem" id="mgrlogOut" onclick="changeView('login-view')"></div>
+        <div class="mgrHeaderItem mgrHeaderItemHalf" id="mgrlogOut" onclick="undo()">↶</div>
+        <div class="mgrHeaderItem mgrHeaderItemHalf" id="mgrlogOut" onclick="redo()">↷</div>
         <div class="mgrHeaderItem" id="mgrHeaderLang" onclick="change_lang()"></div>
     </div>
     <div id="categoryContainer" style="margin-bottom: 10px;">
@@ -102,6 +104,7 @@
     
     <div id="order"></div>
     <div id="menu"></div>
+    <div id="account"></div>
 </div>
 <!-- Add all user view elements inside this div-->
 <div class="main-view" id="user-view">

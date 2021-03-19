@@ -92,6 +92,18 @@ body {
     background-color:#6d4423;
 }
 
+.bigSortButton {
+    width:43%;
+    height: 2.5vw;
+    font-size:1.2vw; 
+    font-weight: bold;
+    margin: 3%;
+    background-color:#6d4423;
+    box-shadow: 0.2vw 0.2vw 0.5vw;
+    cursor: pointer;
+    outline:none;
+}
+
 .menuHeader {
     padding-top: 4%;
     padding-bottom: 2%;
@@ -104,3 +116,25 @@ body {
     font-size:150%;
     text-align:center;
 }
+
+#usermenuInfo {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20vw; /* Could be more or less, depending on screen size */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

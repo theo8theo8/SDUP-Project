@@ -22,6 +22,7 @@
     
     <link rel="stylesheet" href="css/manager.css">
     <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/vipuser.css">
     <link rel="stylesheet" href="css/staff.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="img/boat_icon.png">
@@ -33,8 +34,20 @@
                 $(this).css("display","none");
             });
             $('#'+view).css("display","block");
+            if (view == "user-view") {
+                if (loggedUser.length == 0) {
+                    $("#userWelcome").hide();
+                    $("#balance").hide();
+                    $("#payAccount").hide();
+                    $("#payVipLocker").hide();
+                } else {
+                    $("#userWelcome").show();
+                    $("#balance").show();
+                    $("#payAccount").show();
+                    $("#payVipLocker").show();
+                }
+            }
             //Gör detta för att det ska uppdateras från förändringar i manager
-            //hej
             updateBartenderView();
             welcomeUser();
             document.getElementById("wrong_creds").style.display = "none";
@@ -119,6 +132,10 @@
         <button class="logoutButton" id=userlogOut onclick=logOut()></button>
     </div>
 
+    <div id="usermenuInfoCont" class="modal">
+        <div id="usermenuInfo"></div>
+    </div>
+
     <div class="order">
         <div>
             Beställning
@@ -126,6 +143,8 @@
         <div class="order-box" id=userorder></div>
         <button class="sortButton" id="payBar" onClick=payBar()></button>
         <button class="sortButton" id="payTable" onClick=payTable()></button>
+        <button class="sortButton" id="payAccount" onClick=payAccount()></button>
+        <button class="sortButton" id="payVipLocker" onClick=payVipLocker()></button>
     </div>
 
     <div class="order">

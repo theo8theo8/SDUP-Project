@@ -900,7 +900,7 @@ var DB = {
     "account": [
         {
             "user_id": "1337",
-            "creditSEK" : "30000"
+            "creditSEK" : "450"
         },
         {
             "user_id": "2",

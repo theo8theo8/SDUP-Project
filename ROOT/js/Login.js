@@ -47,5 +47,6 @@ function guest_login() { //Ordinary user
 
 function logOut() {
     loggedUser = [];
+    $('#menu').empty();
     changeView("login-view");
 }

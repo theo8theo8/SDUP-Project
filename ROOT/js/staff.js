@@ -18,20 +18,25 @@ var lastMenu = 'all';
 var currentFiltering = 'none';
 var alcoPercent = 0;
 
-container.addEventListener("touchstart", dragStart, false);
-container.addEventListener("touchend", dragEnd, false);
-container.addEventListener("touchmove", drag, false);
-
+// =====================================================================================================
+// Adds event-listeners for the three different activities
+//
 container.addEventListener("mousedown", dragStart, false);
 container.addEventListener("mouseup", dragEnd, false);
 container.addEventListener("mousemove", drag, false);
 
-
+// =====================================================================================================
+// Loads all the tables, and show the entire menu in it's container
+//
 loadAllTables();
 showMenu();
 
+// =====================================================================================================
+// Specifies the behaviour to use when a drag is started
+//
 function dragStart(e) {
     items = document.querySelectorAll("#twoPtable");
+    //Checks which table is the target
     items.forEach(function(item) {
         if (e.target === item) {
             dragItem = item;
@@ -39,70 +44,72 @@ function dragStart(e) {
     } 
     })
 
+    //Gets the size of the page
     contSize = document.documentElement.clientWidth/100*35;
     itemSize = document.documentElement.clientWidth/100*5;
     xOffset = document.documentElement.clientWidth/100;
+    //Gets positions from the actual html-object
     if(active) {
       var positions = dragItem.style.transform;
       positions = positions.split('(');
       positions = positions[1].split("px");
-      var xVal = parseInt(positions[0]);
+      initialX = parseInt(positions[0]);
       positions = positions[1].split(", ");
-      var yVal = parseInt(positions[1]);
+      initialY = parseInt(positions[1]);
     }
-  if (e.type === "touchstart") {
-    initialX = e.touches[0].clientX - xOffset;
-    initialY = e.touches[0].clientY - yOffset;
-  } else {
-    initialX = xVal /*e.clientX /*- xOffset;*/;
-    initialY = yVal /*e.clientY /*- yOffset*/;
-  }
 }
 
+// =====================================================================================================
+// Specifies the behaviour to use when a drag is ended
+//
 function dragEnd(e) {
   initialX = currentX;
   initialY = currentY;
   active = false;
 }
 
+// =====================================================================================================
+// Specifies the behaviour to use during a drag
+//
 function drag(e) {
   if (active) {
-  
     e.preventDefault();
   
-    if (e.type === "touchmove") {
-      currentX = e.touches[0].clientX - initialX;
-      currentY = e.touches[0].clientY - initialY;
-    } else {
-      currentX = e.clientX - 90;// - initialX;
-      currentY = e.clientY - 250;//- initialY;
-    }
-
+    currentX = e.clientX - 90;
+    currentY = e.clientY - 250;
+    
+    //Multiple if-statements to check that the move is inside the borders of the container
     if (currentX > contSize-itemSize)
     {
-        currentX = contSize-itemSize;
+      currentX = contSize-itemSize;
     }
     if (currentX < 0)
     {
-        currentX = 0;
+      currentX = 0;
     }
     if (currentY > contSize-itemSize)
     {
-        currentY = contSize-itemSize;
+      currentY = contSize-itemSize;
     }
     if (currentY < 0)
     {
-        currentY = 0;
+      currentY = 0;
     }
 
     setTranslate(currentX, currentY, dragItem);
   }
 }
 
+// =====================================================================================================
+// Sets the new coordinates of the object
+//
 function setTranslate(xPos, yPos, el) {
   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 }
 
+// =====================================================================================================
+// Adds a new table to the tablechart
+//
 function addTable() {
   var div = document.createElement('div');
   div.id = 'twoPtable';
@@ -122,10 +129,15 @@ function addTable() {
   div.appendChild(innerDiv);
 
   container.appendChild(div);
+  //Adds an empty order in the DB
   addEmptyOrder(nextNum);
+  //Increases the number of the next table
   nextNum++;
 }
 
+// =====================================================================================================
+// Used during setup, to show all the tables from the database
+//
 function addTableDB(Xpos, Ypos, table_id) {
   var div = document.createElement('div');
   div.id = 'twoPtable';
@@ -148,6 +160,9 @@ function addTableDB(Xpos, Ypos, table_id) {
   container.appendChild(div);
 }
 
+// =====================================================================================================
+// Loads all the tables from the DB into their specified positions
+//
 function loadAllTables() {
   for (i = 0; i < DB.tables.length; i++) {
     var table = DB.tables[i];
@@ -158,6 +173,9 @@ function loadAllTables() {
   }
 }
 
+// =====================================================================================================
+// Gets the total cost of an order
+//
 function getTotalCost(order) {
   var totalCost = 0;
   for (let key in order) {
@@ -168,6 +186,9 @@ function getTotalCost(order) {
   return totalCost;
 }
 
+// =====================================================================================================
+// Shows the order for a table (table_id)
+//
 function showOrder(table_id) {
   $('#order').empty();
   $('#order').append('<div class="menuHeader"> <span style="font-weight:bold">' + get_string('orderHeader') /*"Order for table: "*/ + table_id + ' </span>' + '</div>');
@@ -175,6 +196,7 @@ function showOrder(table_id) {
   $('#order').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('orderSubHeader') /*"Total cost: "*/ + getTotalCost(order) + "kr" +  ' </span>' + '</div>');
   for(let key in order) {
     const item = getNameFromId(key);
+    //Checks that the item hasn't been removed from the DB
     if (item === "null") {
       removeFromOrderWithId(parseInt(key));
     } else {
@@ -186,119 +208,139 @@ function showOrder(table_id) {
   currentTableID = table_id;
 }
 
-function outOfStock() {
-  var oOS = false;
-  for (var i=0; i < DB.orders.length; i++) {
-    if (DB.orders[i].table == currentTableID) {
-      var dic = DB.orders[i].item_id;
-      Object.entries(dic).forEach(([key, value]) => {
-        var stock = parseInt(getStockFromId(key));
-        if (stock < value) {
-          oOS = true;
-          $('#order').prepend('<span style="color:red">' + get_string('outOfStock') + getNameFromId(key) + ' </span></br>');
-          console.log("Not enough in stock for: " + getNameFromId(key));
-        }
-      })
+// =====================================================================================================
+// Returns the current table from the DB
+//
+function getCurrentTable() {
+  if (currentTableID != 0) {
+    for (var i=0; i < DB.orders.length; i++) {
+      if (DB.orders[i].table == currentTableID) {
+        return DB.orders[i];
+      }
     }
   }
+  return "error";
+}
+
+// =====================================================================================================
+// Checks whether there is enough items in stock for every item in the order
+//
+function outOfStock() {
+  var oOS = false;
+  var table = getCurrentTable();
+  if (table === "error") return;
+  var dic = table.item_id;
+  Object.entries(dic).forEach(([key, value]) => {
+    var stock = parseInt(getStockFromId(key));
+    if (stock < value) {
+      oOS = true;
+      $('#order').prepend('<span style="color:red">' + get_string('outOfStock') + getNameFromId(key) + ' </span></br>');
+      console.log("Not enough in stock for: " + getNameFromId(key));
+    }
+  })
   return oOS;
 }
 
+// =====================================================================================================
+// Changes the stock when an order has been sent
+//
 function reviseStock() {
-  for (var i=0; i < DB.orders.length; i++) {
-    if (DB.orders[i].table == currentTableID) {
-      var dic = DB.orders[i].item_id;
-      Object.entries(dic).forEach(([key, value]) => {
-        changeStock(key, -value);
-      })
-    }
-  }
+  var table = getCurrentTable();
+  if (table === "error") return;
+  var dic = table.item_id;
+  Object.entries(dic).forEach(([key, value]) => {
+    changeStock(key, -value);
+  })
 }
 
+// =====================================================================================================
+// Sends an order, either removing it or sending it to the bar
+//
 function sendOrder(con) {
-  if (currentTableID != 0) {
-    for (var i=0; i < DB.orders.length; i++) {
-        if (DB.orders[i].table == currentTableID) {
-          if(con === "console") {
-            if (outOfStock() == true) {
-              return;
-            }
-            console.log("---ORDER-START---");
-            console.log("Table-id: " + currentTableID);
-            console.log(DB.orders[i].item_id);
-            console.log("---ORDER-END---");
-            reviseStock();
-          } else {
-            console.log("---DEL-ORDER-START---");
-            console.log("Table-id: " + currentTableID);
-            console.log("---DEL-ORDER-END---");
-          }
-          DB.orders[i].item_id = {};
-          showOrder(currentTableID);
-          showMenu(lastMenu);
-          return;
-        }
+  var table = getCurrentTable();
+  if (table === "error") return;
+  //Check if the order is removed or sent
+  if(con === "console") {
+    if (outOfStock() == true) {
+      return;
     }
+    console.log("---ORDER-START---");
+    console.log("Table-id: " + currentTableID);
+    console.log(table.item_id);
+    console.log("---ORDER-END---");
+    reviseStock();
+    //Unlocks the order if it is the current one in the user mode
+    if (usercurrentTableID == currentTableID) {
+      orderLock = 0;
+    }
+  } else {
+    console.log("---DEL-ORDER-START---");
+    console.log("Table-id: " + currentTableID);
+    console.log("---DEL-ORDER-END---");
   }
+  table.item_id = {};
+  //Updates the order and menu
+  showOrder(currentTableID);
+  showMenu(lastMenu);
+  return;
 }
 
+// =====================================================================================================
+// Adds or increases an item to/on the order
+//
 function addToOrder(item) {
-  if (currentTableID != 0) {
-    for (var i=0; i < DB.orders.length; i++) {
-        if (DB.orders[i].table == currentTableID) {
-
-          if(checkFullOrder(DB.orders[i].item_id))
-          {
-            return;
-          }
-
-          var key;
-          if (item.includes(':')) {
-            key = getIdFromName(item.split(': ')[0]);
-          } else {
-            key = getIdFromName(item.slice(0, -1));
-          }
-          if (key in DB.orders[i].item_id) {
-            DB.orders[i].item_id[key] = DB.orders[i].item_id[key] + 1;
-          } else {
-            DB.orders[i].item_id[key] = 1;
-          }
-          showOrder(currentTableID);
-          return;
-        }
-      }
+  var table = getCurrentTable();
+  //Checks that the order isn't full(above 10)
+  if(checkFullOrder(table.item_id))
+  {
+    return;
   }
+  var key;
+  //Depending where it was added from, the variable item is different
+  if (item.includes(':')) {
+    key = getIdFromName(item.split(': ')[0]);
+  } else {
+    key = getIdFromName(item.slice(0, -1));
+  }
+  if (key in table.item_id) {
+    table.item_id[key] = table.item_id[key] + 1;
+  } else {
+    table.item_id[key] = 1;
+  }
+  showOrder(currentTableID);
+  return;
 }
 
+// =====================================================================================================
+// Removes an item from an order using the id of the item
+//
 function removeFromOrderWithId(id) {
-  if (currentTableID != 0) {
-    for (var i=0; i < DB.orders.length; i++) {
-        if (DB.orders[i].table == currentTableID) {
-          delete DB.orders[i].item_id[id];
-          return;
-        }
-      }
-  }
+  var table = getCurrentTable();
+  if (table === "error") return;
+  delete table.item_id[id];
+  return;
 }
 
+// =====================================================================================================
+// Removes an item from an order using a text including the name of the item
+//
 function removeFromOrder(item) {
-  if (currentTableID != 0) {
-    for (var i=0; i < DB.orders.length; i++) {
-        if (DB.orders[i].table == currentTableID) {
-          var key = getIdFromName(item.split(':')[0]);
-          var dic = DB.orders[i].item_id;
-          if (dic[key] == 1) {
-            delete DB.orders[i].item_id[key];
-          } else {
-            DB.orders[i].item_id[key]--;
-          }
-          showOrder(currentTableID);
-          return;
-        }
-      }
+  var table = getCurrentTable();
+  if (table === "error") return;
+  var key = getIdFromName(item.split(':')[0]);
+  var dic = table.item_id;
+  if (dic[key] == 1) {
+    delete table.item_id[key];
+  } else {
+    table.item_id[key]--;
   }
+  showOrder(currentTableID);
+  return;
 }
 
+// =====================================================================================================
+// Adds the sorting-buttons for the menu
+//
 function addBasicMenu(){
   $('#menu').empty();
   switch (currentFiltering) {
@@ -325,6 +367,9 @@ function addBasicMenu(){
   update_view();
 }
 
+// =====================================================================================================
+// Shows the actual menu, using what is sent into the function
+//
 function showParticularMenu(menu) {
   if (menu.length == 0) {
     $('#menu').append('<div class="orderSubHeader"><span style="font-weight:bold">' + get_string('sorryMessage') + ' </span>' + '</div>');
@@ -345,6 +390,9 @@ function showParticularMenu(menu) {
   }
 }
 
+// =====================================================================================================
+// Shows info for a item on the menu, different depending on the type of beverage
+//
 function menuInfo(item) {
   var id;
   if (typeof item === "number") {
@@ -405,6 +453,9 @@ function menuInfo(item) {
   console.log(id);
 }
 
+// =====================================================================================================
+// Inputs and buttons on the bottom of the menuinfo modal
+//
 function endOfMenuInfo(id) {
   $('#menuInfo').append('<button class="hideButton" onclick=hideItem(' + id + ')>' + get_string('hideItem') + '</button><br>');
   $('#menuInfo').append('<input class = infoInput placeholder= -20/20 type="number" id="stock_change">');
@@ -413,6 +464,9 @@ function endOfMenuInfo(id) {
   $('#menuInfo').append('<button class="hideButton" onclick=editPrice(' + id + ')>' + get_string('changePrice') + '</button>');
 }
 
+// =====================================================================================================
+// Edits the stock of a beverage in the DB
+//
 function editStock(id) {
   changeStock(id, document.getElementById("stock_change").value);
   menuInfo(id);
@@ -420,6 +474,9 @@ function editStock(id) {
   showOrder(currentTableID);
 }
 
+// =====================================================================================================
+// Edits the price of a beverage in the DB
+//
 function editPrice(id) {
   changePrice(id, document.getElementById("price_change").value);
   menuInfo(id);
@@ -427,6 +484,9 @@ function editPrice(id) {
   showOrder(currentTableID);
 }
 
+// =====================================================================================================
+// Hides an item(not deletes) from the menu
+//
 function hideItem(id) {
   for (i = 0; i < DB2.spirits.length; i++) {
     if (DB2.spirits[i].artikelid == id) {
@@ -441,11 +501,16 @@ function hideItem(id) {
   }
 }
 
-
+// =====================================================================================================
+// Adds an empty order to the db
+//
 function addEmptyOrder(id) {
   DB.orders.push({ table: id, item_id: {}});
 }
 
+// =====================================================================================================
+// Decides which menu to show, depending on the current filtering
+//
 function showMenu(type) {
   switch (type) {
     case 'beer':
@@ -508,15 +573,24 @@ function showMenu(type) {
   }
 }
 
+// =====================================================================================================
+// The order and accountbox must be updated specifically when the language changes
+//
 function updateLangStaff() {
   showOrder(currentTableID);
   showAccountBox();
 }
 
+// =====================================================================================================
+// Notifies security in the console
+//
 function notifySecurity() {
   console.log("Security notified!");
 }
 
+// =====================================================================================================
+// Checks whether an order is full or not
+//
 function checkFullOrder(dic) {
   var total = 0;
   for(var key in dic) {
@@ -525,6 +599,9 @@ function checkFullOrder(dic) {
   return total == 10;
 }
 
+// =====================================================================================================
+// Updates the bartenderview, after changes may have been made in other parts of the program
+//
 function updateBartenderView() {
   if (currentTableID != 0) {
     showOrder(currentTableID);
@@ -533,15 +610,20 @@ function updateBartenderView() {
   showAccountBox();
 }
 
+// =====================================================================================================
+// Adds all the html for the accountbox
+//
 function showAccountBox() {
   $('#account').empty();
   $('#account').append('<div class="orderSubHeader"><span style="font-weight:bold">' + get_string('addToVip') + ' </span>' + '</div>');
   $('#account').append('<input class = accountInput placeholder= username type="text" id="account_usr">');
   $('#account').append('<input class = accountInput placeholder= 500 type="number" id="account_amount">');
   $('#account').append('<button class="accountButton" onclick=editAccount()>' + get_string('changeCash') + '</button>');
-  
 }
 
+// =====================================================================================================
+// Updates the balance of a VIP-user's account
+//
 function editAccount(id) {
   var usrName = document.getElementById("account_usr").value;
   var amount = document.getElementById("account_amount").value;

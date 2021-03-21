@@ -119,15 +119,18 @@ function payTable() {
 
 function welcomeUser() {
     console.log(loggedUser);
+    console.log(loggedUser[7]);
+    console.log(loggedUser[4]);
     //$( '#userWelcome').append('<span style="font-weight:bold">' + hej + '</span>');
     //$('#userWelcome').append($('<span>').text("hej"));
     //$("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
     $("#balance span").empty();
     $("#userWelcome span").empty();
     //$("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
-    $('#userWelcome').append($('<span>').text("hej"));
-    //$("userWelcome span").append(" " + loggedUser[4] + " " + loggedUser[5]);
-    $("#balance span").append(loggedUser[7]);
+    //$("#userWelcome").append($("<span>").text("hej"));
+    $("userWelcome span").text(loggedUser[4]); //VARFÖR FUNKAR DU EJ!!!
+    //$("#balance span").append(loggedUser[7]);
+    $("#balance span").text(loggedUser[4] + " " + loggedUser[5] + ", " + loggedUser[6] + " sek");
 
     showMenu();
     usershowOrder(usercurrentTableID);

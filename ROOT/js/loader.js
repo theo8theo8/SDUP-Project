@@ -407,7 +407,7 @@ function increaseBalance(userName, newAmount) {
 
     for (i = 0; i < DB.account.length; i++) {
         if (DB.account[i].user_id == userID) {
-            DB.account[i].creditSEK = DB.account[i].creditSEK + Number(newAmount); 
+            DB.account[i].creditSEK = Number(DB.account[i].creditSEK) + Number(newAmount); 
             return "worked";  
         };
     };

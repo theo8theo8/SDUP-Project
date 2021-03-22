@@ -2,6 +2,7 @@
 // Table id for user/vip-user
 //
 var usercurrentTableID = 3;
+var currentFiltering = 'none';
 // =====================================================================================================
 // Initialization for menus
 //

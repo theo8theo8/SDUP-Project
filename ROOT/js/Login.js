@@ -1,15 +1,21 @@
 loggedUser = [];
 
+// Logs a user in and enters the correct view
 function user_login() {
 
+    // Get username, password, and 
     var username = document.getElementById("username_label").value;
     var password = document.getElementById("password_label").value;
     var x = document.getElementById("wrong_creds");
+
+    // Get all username and check if the one entered is correct
     var allUsernames = allUserNames();
     if (allUsernames.includes(username)) {
+        // Check if password is correct
         var details = userDetails(username);
         if (password == details[0]) {
             console.log("Valid username and password")
+            // Switch to the correct view, depending on the credentials of the user
             switch (details[1]) {
                 case '0': //manager
                 changeView("manager-view");
@@ -41,10 +47,12 @@ function user_login() {
     }
 }
 
+// For guests, dont log in and show the customer view
 function guest_login() { //Ordinary user
     changeView("user-view");
 }
 
+// Logging out switches back to the login view
 function logOut() {
     loggedUser = [];
     $('#menu').empty();

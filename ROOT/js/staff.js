@@ -5,10 +5,6 @@ var order = document.getElementById("order");
 var active = false;
 var currentX;
 var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
 var contSize = 0;
 var itemSize = 0;
 var nextNum = 1;
@@ -47,24 +43,12 @@ function dragStart(e) {
     //Gets the size of the page
     contSize = document.documentElement.clientWidth/100*35;
     itemSize = document.documentElement.clientWidth/100*5;
-    xOffset = document.documentElement.clientWidth/100;
-    //Gets positions from the actual html-object
-    if(active) {
-      var positions = dragItem.style.transform;
-      positions = positions.split('(');
-      positions = positions[1].split("px");
-      initialX = parseInt(positions[0]);
-      positions = positions[1].split(", ");
-      initialY = parseInt(positions[1]);
-    }
 }
 
 // =====================================================================================================
 // Specifies the behaviour to use when a drag is ended
 //
 function dragEnd(e) {
-  initialX = currentX;
-  initialY = currentY;
   active = false;
 }
 
@@ -284,11 +268,12 @@ function sendOrder(con) {
     console.log(table.item_id);
     console.log("---ORDER-END---");
     reviseStock();
-    //Unlocks the order if it is the current one in the user mode
+    alert("Order sent");
   } else {
     console.log("---DEL-ORDER-START---");
     console.log("Table-id: " + currentTableID);
     console.log("---DEL-ORDER-END---");
+    alert("Order cancelled")
   }
   table.item_id = {};
   //Updates the order and menu
@@ -296,6 +281,7 @@ function sendOrder(con) {
   showOrder(currentTableID);
   showMenu(lastMenu);
   $('#bordskarta').empty();
+  $('#bordskarta').append('<button class="tableButton" id=twoPtableBut onclick=addTable()>' + get_string('twoPtableBut') + '</button>');
   loadAllTables();
   return;
 }
@@ -600,7 +586,7 @@ function updateLangStaff() {
 // Notifies security in the console
 //
 function notifySecurity() {
-  console.log("Security notified!");
+  alert("Security called");
 }
 
 // =====================================================================================================
@@ -624,6 +610,7 @@ function updateBartenderView() {
   showMenu(lastMenu);
   showAccountBox();
   $('#bordskarta').empty();
+  $('#bordskarta').append('<button class="tableButton" id=twoPtableBut onclick=addTable()>' + get_string('twoPtableBut') + '</button>');
   loadAllTables();
 }
 
@@ -646,7 +633,7 @@ function editAccount(id) {
   var amount = document.getElementById("account_amount").value;
   if (amount > 0) {
     if (increaseBalance(usrName, amount) === "worked") {
-      console.log("Balance increased for " + usrName + " by " + amount + "kr");
+      alert("Balance increased for " + usrName + " by " + amount + " kr")
     }
   }
 }

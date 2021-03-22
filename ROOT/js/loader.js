@@ -113,7 +113,7 @@ function allBeverages() {
 }
 
 // =====================================================================================================
-// Returns a list of all the names of the beverages in the database along with their ID.
+// Returns a list of all the names of the beverages in the database along with their ID and more info
 //
 function allBeveragesWithID() {
 
@@ -276,8 +276,10 @@ function percentToNumber(percentStr) {
     return Number(percentStr.slice(0,-1));
 }
 
+// =====================================================================================================
+// Returns a list of all the items on the menu, including their names, id, stock, price and whether to hide or not
+//
 function allMenuBeverages() {
-    // Using a local variable to collect the items.
     var collector = [];
 
     for (i = 0; i < DB2.spirits.length; i++) {
@@ -287,6 +289,9 @@ function allMenuBeverages() {
     return collector;
 }
 
+// =====================================================================================================
+// Returns the order for a specific table
+//
 function getOrder(table_id) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
@@ -294,6 +299,7 @@ function getOrder(table_id) {
         }
     }
 }
+
 
 function getOrderLock(table_id) {
     for (i=0; i < DB.orders.length; i++) {
@@ -310,7 +316,9 @@ function setOrderLock(table_id, order_lock) {
         }
     }
 }
-
+// =====================================================================================================
+// Returns info suitable for beers using the id of the beer
+//
 function getBeerInfoFromId(id) {
     for (i = 0; i < DB2.spirits.length; i++) {
         if (DB2.spirits[i].artikelid == parseInt(id)) {
@@ -319,6 +327,9 @@ function getBeerInfoFromId(id) {
     };
 }
 
+// =====================================================================================================
+// Returns info suitable for wine using the id of the wine
+//
 function getWineInfoFromId(id) {
     for (i = 0; i < DB2.spirits.length; i++) {
         if (DB2.spirits[i].artikelid == parseInt(id)) {
@@ -327,6 +338,9 @@ function getWineInfoFromId(id) {
     };
 }
 
+// =====================================================================================================
+// Returns info suitable for spirits using the id of the spirit
+//
 function getSpiritInfoFromId(id) {
     for (i = 0; i < DB2.spirits.length; i++) {
         if (DB2.spirits[i].artikelid == parseInt(id)) {
@@ -335,6 +349,9 @@ function getSpiritInfoFromId(id) {
     };
 }
 
+// =====================================================================================================
+// Returns the type of the beverage using the id
+//
 function getTypeFromId(id) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -344,6 +361,9 @@ function getTypeFromId(id) {
     }
 }
 
+// =====================================================================================================
+// Returns the name of the beverage using the id
+//
 function getNameFromId(id) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -354,6 +374,9 @@ function getNameFromId(id) {
     return "null";
 }
 
+// =====================================================================================================
+// Returns the cost of the beverage using the id
+//
 function getCostFromId(id) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -364,6 +387,9 @@ function getCostFromId(id) {
     return 0;
 }
 
+// =====================================================================================================
+// Returns the id of the beverage using the name
+//
 function getIdFromName(name) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -373,6 +399,9 @@ function getIdFromName(name) {
     }
 }
 
+// =====================================================================================================
+// Returns the stock of the beverage using the id
+//
 function getStockFromId(id) {
     var all = allBeveragesWithID();
     for (i=0; i < all.length; i++) {
@@ -382,6 +411,9 @@ function getStockFromId(id) {
     }
 }
 
+// =====================================================================================================
+// Returns all beverages of a specific type
+//
 function allBeveragesOfType(type) {
     var collector = [];
 
@@ -393,6 +425,9 @@ function allBeveragesOfType(type) {
     return collector;
 }
 
+// =====================================================================================================
+// Returns all beverages either above or below a strength
+//
 function allBeveragesWithStrength(way, strength) {
     var collector = [];
     if(way === "above") {
@@ -412,6 +447,9 @@ function allBeveragesWithStrength(way, strength) {
     return collector;
 }
 
+// =====================================================================================================
+// Increase the balance of a vip-account
+//
 function increaseBalance(userName, newAmount) {
     var userID;
 

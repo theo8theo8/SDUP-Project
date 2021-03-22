@@ -102,6 +102,7 @@ function replenishStock(id) {
 
     closeItemModal();
     update_view();
+    loadMgrEditStock();
 }
 
 // Deletes beverage and refreshes the view
@@ -231,7 +232,10 @@ function loadMgrEditStock() {
     let a = allBeveragesWithID().sort(sortStock);
     for (let i = 0; i < a.length && i < 100; i++) {
         const element = a[i];
-        $('#mgrContent').append('<div class="mgrMenuListItem" onclick="mgrListClick(this)"><span class="idSpan" style="font-weight:bold">' + element[0] + '</span> ' + element[1] + '</div');
+
+        // If the beverage has a low stock, change its color
+        let itemClass = Number(a[i][4]) < 10 ? "mgrMenuListItem mgrMenuListItemLowStock" : "mgrMenuListItem";
+        $('#mgrContent').append('<div class="' + itemClass + '" onclick="mgrListClick(this)"><span class="idSpan" style="font-weight:bold">' + element[0] + '</span> ' + element[1] + '</div');
     }
 }
 

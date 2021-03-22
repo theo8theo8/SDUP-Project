@@ -78,6 +78,14 @@ body {
     background-color:#add8e688;
 }
 
+.mgrMenuListItemLowStock {
+    background-color:#e23d3d34;
+}
+
+.mgrMenuListItemLowStock:hover {
+    background-color:#e69c9c88;
+}
+
 #item-modal {
     display:none;
     position:fixed;

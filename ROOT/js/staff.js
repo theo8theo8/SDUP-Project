@@ -150,6 +150,9 @@ function addTableDB(Xpos, Ypos, table_id) {
     case 2:
       div.style.backgroundColor = "yellow";
       break;
+    case 3:
+      div.style.backgroundColor = "green";
+      break;
     default:
       break;
   }

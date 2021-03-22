@@ -295,6 +295,22 @@ function getOrder(table_id) {
     }
 }
 
+function getOrderLock(table_id) {
+    for (i=0; i < DB.orders.length; i++) {
+        if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
+            return DB.orders[i].order_lock;
+        }
+    }
+}
+
+function setOrderLock(table_id, order_lock) {
+    for (i=0; i < DB.orders.length; i++) {
+        if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
+            DB.orders[i].order_lock = order_lock;
+        }
+    }
+}
+
 function getBeerInfoFromId(id) {
     for (i = 0; i < DB2.spirits.length; i++) {
         if (DB2.spirits[i].artikelid == parseInt(id)) {

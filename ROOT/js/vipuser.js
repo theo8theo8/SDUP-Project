@@ -1,6 +1,4 @@
 var usercurrentTableID = 3;
-var orderLock = 0;
-//var loggedUser = ["user", "user", "user_id", "username", "firstname", "lastname", "email", "account"];
 
 usershowOrder(usercurrentTableID);
 welcomeUser()
@@ -200,6 +198,19 @@ function usershowOrder(table_id) { //kopierat
     }
   }   //Beställknappar här ist ?
   usercurrentTableID = table_id;
+  switch (getOrderLock(usercurrentTableID)) {
+    case 1:
+      $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payBarOrder') + ' </span>' + '</div>');
+      break;
+    case 2:
+      $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payTableOrder') + ' </span>' + '</div>');
+      break;
+    case 3:
+      $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('accountPayment') + ' </span>' + '</div>');
+      break;
+    default:
+      break;
+  }
 }
 
 function userremoveFromOrderWithId(id) {
@@ -215,7 +226,7 @@ function userremoveFromOrderWithId(id) {
 
 function useraddToOrder(item) {  //från staff
     console.log(item);
-    if (usercurrentTableID != 0 && orderLock == 0) { /* la till orderLock */
+    if (usercurrentTableID != 0 && getOrderLock(usercurrentTableID) == 0) { /* la till orderLock */
         for (var i=0; i < DB.orders.length; i++) {
             if (DB.orders[i].table == usercurrentTableID) {
               if(usercheckFullOrder(DB.orders[i].item_id))
@@ -250,7 +261,7 @@ function usercheckFullOrder(dic) {
 
 
 function userremoveFromOrder(item) { //kopierat
-    if (usercurrentTableID != 0 && orderLock == 0) {
+    if (usercurrentTableID != 0 && getOrderLock(usercurrentTableID) == 0) {
         for (var i=0; i < DB.orders.length; i++) {
             if (DB.orders[i].table == usercurrentTableID) {
                 var key = getIdFromName(item.split(':')[0]);
@@ -268,25 +279,25 @@ function userremoveFromOrder(item) { //kopierat
 }
 
 function payBar() {
-    if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
-        $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payBarOrder') + ' </span>' + '</div>');
-        orderLock = 1;
+    if (getOrderLock(usercurrentTableID) == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
+        setOrderLock(usercurrentTableID, 1);
+        usershowOrder(usercurrentTableID);
     }
 }
 
 function payTable() {
-    if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
-        $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payTableOrder') + ' </span>' + '</div>');
-        orderLock = 2;
+    if (getOrderLock(usercurrentTableID) == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
+        setOrderLock(usercurrentTableID, 2);
+        usershowOrder(usercurrentTableID);
     }
 }
 
 function payAccount() {
-  if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
+  if (getOrderLock(usercurrentTableID) == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
     var paymentSuccessful = accountPayment();
     if (paymentSuccessful) {
-      $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('accountPayment') + ' </span>' + '</div>');
-      orderLock = 3;
+      setOrderLock(usercurrentTableID, 3)
+      usershowOrder(usercurrentTableID);
     } else {
       $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('lowBalance') + ' </span>' + '</div>');
     }
@@ -307,11 +318,11 @@ function accountPayment() {
 
 function payVipLocker() {
   if (usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
-    if (orderLock == 0) {
+    if (getOrderLock(usercurrentTableID) == 0) {
       var paymentSuccessful = accountPayment();
     }
-    if (paymentSuccessful || orderLock == 4) { 
-      orderLock = 4;
+    if (paymentSuccessful || getOrderLock(usercurrentTableID) == 4) { 
+      setOrderLock(usercurrentTableID, 4);
       $('#userVipCodeInfo').empty();
       $('#userVipCodeInfo').append('<span class="close">' + "&times;" + '</span>');
       $('#userVipCodeInfo').append('<span>' + get_string('lockerCode') + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + "<br>" + ' </span>');
@@ -357,7 +368,7 @@ function usersendOrder(con) {  ///kanske unifia currenttable
           usershowOrder(usercurrentTableID);
           usershowMenu("all");
           userVipCode.style.display = "none";
-          orderLock = 0;
+          setOrderLock(usercurrentTableID, 0);
           return;
         }
     }

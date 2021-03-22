@@ -234,6 +234,7 @@ function sendOrder(con) {
             console.log("---DEL-ORDER-END---");
           }
           DB.orders[i].item_id = {};
+          setOrderLock(currentTableID, 0);
           showOrder(currentTableID);
           showMenu(lastMenu);
           return;
@@ -443,7 +444,7 @@ function hideItem(id) {
 
 
 function addEmptyOrder(id) {
-  DB.orders.push({ table: id, item_id: {}});
+  DB.orders.push({ table: id, order_lock: 0, item_id: {}});
 }
 
 function showMenu(type) {

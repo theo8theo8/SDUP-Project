@@ -1210,41 +1210,50 @@ var DB = {
             "Ypos": "430"
         }
     ],
-    "orders": [   //ordertyp 0, 1, 2
+    "orders": [   //ordertyp 0, 1, 2, 3, 4
         {   
             "table": 1,
+            "order_lock": 0,
             "item_id": {"1206":3}
         },
         {   
             "table": 2,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 3,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 4,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 5,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 6,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 7,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 8,
+            "order_lock": 0,
             "item_id": {}
         },
         {   
             "table": 9,
+            "order_lock": 0,
             "item_id": {}
         }
     ]

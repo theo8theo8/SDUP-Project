@@ -89,7 +89,7 @@ function useraddBasicMenu(){
       $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("back")>' + get_string("sortBack") + '</button>');
       $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("alcoBelow")>' + get_string("sortBelow") + '</button>');
       $('#usermenu').append('<input class="sortInput" type="number" id="alco_percent" min=1 max=100>');
-      $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("alcoAbove")>' + get_string("sortAbove") + '</button>'); //VAFAN FYLLS DOM HÄR I FÖR ???
+      $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("alcoAbove")>' + get_string("sortAbove") + '</button>'); 
       $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("tannin")>' + get_string("sortTannins") + '</button>');
       $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("gluten")>' + get_string("sortGluten") + '</button>');
       break;

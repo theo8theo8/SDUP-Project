@@ -300,6 +300,22 @@ function getOrder(table_id) {
     }
 }
 
+
+function getOrderLock(table_id) {
+    for (i=0; i < DB.orders.length; i++) {
+        if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
+            return DB.orders[i].order_lock;
+        }
+    }
+}
+
+function setOrderLock(table_id, order_lock) {
+    for (i=0; i < DB.orders.length; i++) {
+        if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
+            DB.orders[i].order_lock = order_lock;
+        }
+    }
+}
 // =====================================================================================================
 // Returns info suitable for beers using the id of the beer
 //

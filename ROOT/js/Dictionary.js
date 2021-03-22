@@ -11,7 +11,7 @@ var language = 'en'
 // track of the different keys that are available  for IDs.
 //
 dict = {
-    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'userlogOut', 'mgrlogOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice', , 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome', 'addToVip', 'changeCash'],       // keys for strings
+    'keys' : ['heading2','info', 'customers', 'inlog', 'guest_order', 'submit', 'wrong_creds', 'twoPtableBut', 'logOut', 'userlogOut', 'mgrlogOut', 'mgrHeaderRefill', 'mgrHeaderEdit', 'mgrHeaderLang', 'mgrCategorySelect', 'mgrCategoryAll', 'mgrItemName', 'mgrItemPrice', 'mgrItemStock', 'mgrItemCategory', 'mgrItemAlcContent', 'mgrItemSupplier', 'mgrAdd', 'mgrAddItem', 'mgrRestockItem', 'mgrRemoveItem', 'mgrConfirmRestock', 'mgrConfirmDelete', 'mgrCancel', 'sortAll', 'sortBeer', 'sortWine', 'sortSpirits', 'orderHeader', 'orderSubHeader', 'bspirName', 'beerBrewery', 'beerCountry', 'spirType', 'spirStrength', 'spirSize', 'beerPrice', 'wineYear', 'wineProducer', 'wineGrape', 'spirStock', 'hideItem', 'sortBack', 'sortCat', 'sortRest', 'sortBelow', 'sortAbove', 'sortTannins', 'sortGluten', 'sorryMessage', 'changeStock', 'finishOrder', 'deleteOrder', 'outOfStock', 'changePrice', , 'payTable', 'payBar', 'payTableOrder', 'payBarOrder', 'userWelcome', 'addToVip', 'changeCash', 'accountBalance', 'lowBalance', 'accountPayment', 'payAccount', 'payVipLocker', 'lockerCode', 'pressWhenDone', 'done'],       // keys for strings
     'placeholders' : ['username_label', 'password_label', 'mgrRestockCount'],
 
     'pics' : ['pic1','pic2','pic3'],              // keys for pictures
@@ -97,7 +97,16 @@ dict = {
         'payTableOrder': "Order received and will arrive shortly",
         'userWelcome': "Welcome ",
         'addToVip': "Balance vip account", 
-        'changeCash': "Increase balance"
+        'changeCash': "Increase balance",
+        'accountBalance' : "Account balance: ",
+        'lowBalance' : "Not enough money on account, refill at the bar",
+        'accountPayment' : "Money withdrawn, order will arrive shortly",
+        'payAccount' : "Pay with account",
+        'payVipLocker' : "Get from vip-locker",
+        'lockerCode' : "Code: ",
+        'pressWhenDone' : "Press done when items retrived",
+        'done' : "Done"
+
 
     },
     'sv' : {
@@ -173,9 +182,15 @@ dict = {
         'payTableOrder': "Beställningen har mottagits och kommer snart",
         'userWelcome': "Välkommen ",
         'addToVip': "Saldo vip-konto",
-        'changeCash': "Öka saldo"
-
-
+        'changeCash': "Öka saldo",
+        'accountBalance' : "Kontobalans: ",
+        'lowBalance': "För lite pengar på kontot, fyll på i baren",
+        'accountPayment' : "Pengar har dragits, beställningen kommer snart",
+        'payAccount' : "Betala med konto",
+        'payVipLocker' : "Hämta från vipskåpet",
+        'lockerCode' : "Kod: ",
+        'pressWhenDone' : "Tryck på klar när du hämtat",
+        'done' : "Klar"
     }
 }
 

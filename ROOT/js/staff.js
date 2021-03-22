@@ -270,9 +270,6 @@ function sendOrder(con) {
     console.log("---ORDER-END---");
     reviseStock();
     //Unlocks the order if it is the current one in the user mode
-    if (usercurrentTableID == currentTableID) {
-      orderLock = 0;
-    }
   } else {
     console.log("---DEL-ORDER-START---");
     console.log("Table-id: " + currentTableID);
@@ -280,6 +277,7 @@ function sendOrder(con) {
   }
   table.item_id = {};
   //Updates the order and menu
+  setOrderLock(currentTableID, 0);
   showOrder(currentTableID);
   showMenu(lastMenu);
   return;
@@ -505,7 +503,7 @@ function hideItem(id) {
 // Adds an empty order to the db
 //
 function addEmptyOrder(id) {
-  DB.orders.push({ table: id, item_id: {}});
+  DB.orders.push({ table: id, order_lock: 0, item_id: {}});
 }
 
 // =====================================================================================================

@@ -22,6 +22,7 @@
     
     <link rel="stylesheet" href="css/manager.css">
     <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/vipuser.css">
     <link rel="stylesheet" href="css/staff.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="img/boat_icon.png">
@@ -33,6 +34,17 @@
                 $(this).css("display","none");
             });
             $('#'+view).css("display","block");
+            if (view == "user-view") {
+                if (loggedUser.length == 0) {
+                    $("#balance").hide();
+                    $("#payAccount").hide();
+                    $("#payVipLocker").hide();
+                } else {
+                    $("#balance").show();
+                    $("#payAccount").show();
+                    $("#payVipLocker").show();
+                }
+            }
             //Gör detta för att det ska uppdateras från förändringar i manager
             updateBartenderView();
             welcomeUser();
@@ -109,28 +121,27 @@
 </div>
 <!-- Add all user view elements inside this div-->
 <div class="main-view" id="user-view">
-    <div id="userWelcome"><span></span></div>
-    <div id="balance"><span></span></div>
 
+    <div id=userHeader>
+    </div>
 
-    <div id=lang>
-        <img id="pic3" style="width: 5vw; height: 2.5vh;" src="" onclick="change_lang()">
-        <button class="logoutButton" id=userlogOut onclick=logOut()></button>
+    <div id="usermenuInfoCont" class="modal">
+        <div id="usermenuInfo"></div>
+    </div>
+
+    <div id="userVipCode" class="modal">
+        <div id="userVipCodeInfo"></div>
     </div>
 
     <div class="order">
-        <div>
-            Beställning
-        </div>
         <div class="order-box" id=userorder></div>
         <button class="sortButton" id="payBar" onClick=payBar()></button>
         <button class="sortButton" id="payTable" onClick=payTable()></button>
+        <button class="sortButton" id="payAccount" onClick=payAccount()></button>
+        <button class="sortButton" id="payVipLocker" onClick=payVipLocker()></button>
     </div>
 
     <div class="order">
-        <div>
-            Meny
-        </div>
         <div class="order-box" id=usermenu></div>
     </div>
     <script type="text/javascript" src="js/vipuser.js"></script>

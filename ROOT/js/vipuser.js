@@ -71,23 +71,23 @@ function usershowMenu(type) { //Kopierad från staff
     $('#usermenu').empty();
     switch (currentFiltering) {
       case "cat":
-        $('#usermenu').append('<button class="sortButton" id=sortBack onclick=usershowMenu("back")></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortAll onclick=usershowMenu()></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortBeer onclick=usershowMenu("beer")></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortWine onclick=usershowMenu("wine")></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortSpirits onclick=usershowMenu("spirits")></button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("back")>' + get_string("sortBack") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu()>' + get_string("sortAll") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("beer")>' + get_string("sortBeer") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("wine")>' + get_string("sortWine") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("spirits")>' + get_string("sortSpirits") + '</button>');
         break;
       case "rest":
-        $('#usermenu').append('<button class="sortButton" id=sortBack onclick=usershowMenu("back")></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortBelow onclick=usershowMenu("alcoBelow")></button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("back")>' + get_string("sortBack") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("alcoBelow")>' + get_string("sortBelow") + '</button>');
         $('#usermenu').append('<input class="sortInput" type="number" id="alco_percent" min=1 max=100>');
-        $('#usermenu').append('<button class="sortButton" id=sortAbove onclick=usershowMenu("alcoAbove")></button>'); //VAFAN FYLLS DOM HÄR I FÖR ???
-        $('#usermenu').append('<button class="sortButton" id=sortTannins onclick=usershowMenu("tannin")></button>');
-        $('#usermenu').append('<button class="sortButton" id=sortGluten onclick=usershowMenu("gluten")></button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("alcoAbove")>' + get_string("sortAbove") + '</button>'); //VAFAN FYLLS DOM HÄR I FÖR ???
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("tannin")>' + get_string("sortTannins") + '</button>');
+        $('#usermenu').append('<button class="sortButton" onclick=usershowMenu("gluten")>' + get_string("sortGluten") + '</button>');
         break;
       default:
-        $('#usermenu').append('<button class="bigSortButton" id=sortCat onclick=usershowMenu("cat")></button>');
-        $('#usermenu').append('<button class="bigSortButton" id=sortRest onclick=usershowMenu("rest")></button>');
+        $('#usermenu').append('<button class="bigSortButton" onclick=usershowMenu("cat")>' + get_string("sortCat") + '</button>');
+        $('#usermenu').append('<button class="bigSortButton" onclick=usershowMenu("rest")>' + get_string("sortRest") + '</button>');
         break;
     }
     update_view();
@@ -268,25 +268,25 @@ function userremoveFromOrder(item) { //kopierat
 }
 
 function payBar() {
-    if (orderLock == 0) {
+    if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
         $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payBarOrder') + ' </span>' + '</div>');
         orderLock = 1;
     }
 }
 
 function payTable() {
-    if (orderLock == 0) {
+    if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
         $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('payTableOrder') + ' </span>' + '</div>');
-        orderLock = 1;
+        orderLock = 2;
     }
 }
 
 function payAccount() {
-  if (orderLock == 0 ) {
+  if (orderLock == 0 && usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
     var paymentSuccessful = accountPayment();
     if (paymentSuccessful) {
       $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('accountPayment') + ' </span>' + '</div>');
-      orderLock = 1;
+      orderLock = 3;
     } else {
       $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('lowBalance') + ' </span>' + '</div>');
     }
@@ -305,27 +305,77 @@ function accountPayment() {
   }
 }
 
+function payVipLocker() {
+  if (usergetTotalCost(getOrder(usercurrentTableID)) != 0) {
+    if (orderLock == 0) {
+      var paymentSuccessful = accountPayment();
+    }
+    if (paymentSuccessful || orderLock == 4) { 
+      orderLock = 4;
+      $('#userVipCodeInfo').empty();
+      $('#userVipCodeInfo').append('<span class="close">' + "&times;" + '</span>');
+      $('#userVipCodeInfo').append('<span>' + get_string('lockerCode') + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + "<br>" + ' </span>');
+      $('#userVipCodeInfo').append('<span>' + get_string('pressWhenDone') + "<br>" + ' </span>');
+      $('#userVipCodeInfo').append('<button class="sortButton" onClick=usersendOrder("console") >'+ get_string("done") + ' </button>');
+      
+      userVipCode.style.display = "block";
+      var span = document.getElementsByClassName("close")[0];
+    
+      span.onclick = function() {
+        userVipCode.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == userVipCode) {
+          userVipCode.style.display = "none";
+        }
+      }
+    } else {
+      $('#userorder').append('<div class="orderSubHeader"> <span style="font-weight:bold">' + get_string('lowBalance') + ' </span>' + '</div>');
+    }
+  }
+}
+
+function usersendOrder(con) {  ///kanske unifia currenttable
+  if (usercurrentTableID != 0) {
+    for (var i=0; i < DB.orders.length; i++) {
+        if (DB.orders[i].table == usercurrentTableID) {
+          if(con === "console") {
+            if (outOfStock() == true) {
+              return;
+            }
+            console.log("---ORDER-START---");
+            console.log("Table-id: " + usercurrentTableID);
+            console.log(DB.orders[i].item_id);
+            console.log("---ORDER-END---");
+            reviseStock();
+          } else {
+            console.log("---DEL-ORDER-START---");
+            console.log("Table-id: " + usercurrentTableID);
+            console.log("---DEL-ORDER-END---");
+          }
+          DB.orders[i].item_id = {};
+          usershowOrder(usercurrentTableID);
+          usershowMenu("all");
+          userVipCode.style.display = "none";
+          orderLock = 0;
+          return;
+        }
+    }
+  }
+}
+
 function welcomeUser() {
     console.log(loggedUser);
     console.log(loggedUser[7]);
     console.log(loggedUser[4]);
-    //$( '#userWelcome').append('<span style="font-weight:bold">' + hej + '</span>');
-    //$('#userWelcome').append($('<span>').text("hej"));
-    //$("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
-    $("#balance span").empty();
-    $("#userWelcome span").empty();
-    //$("#userWelcome").append($("<span>").text(" " + loggedUser[4] + " " + loggedUser[5]));
-    //$("#userWelcome").append($("<span>").text("hej"));
-    $("userWelcome span").text(loggedUser[4]); //VARFÖR FUNKAR DU EJ!!!
-    //$("#balance span").append(loggedUser[7]);
-    $("#balance span").text(loggedUser[4] + " " + loggedUser[5] + ", " + loggedUser[6] + " sek");
-
+    $("#userHeader").empty();
+    $("#userHeader").append(get_string("userWelcome"))
+    if (loggedUser.length != 0) {
+      $("#userHeader").append(loggedUser[4] + " " + loggedUser[5])
+    } 
+    $("#userHeader").append('<img id="pic3" style="float:right; width: 8vw; height: 4vw; margin: 1%;" src="" onclick="change_lang()">');
+    $("#userHeader").append('<button class="logoutButton" id=userlogOut onclick=logOut()></button>');
     usershowMenu();
     usershowOrder(usercurrentTableID);
     update_view();
-}
-
-function updateLangStaff() {
-    usershowOrder(usercurrentTableID);
-    welcomeUser();
 }

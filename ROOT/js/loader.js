@@ -1,7 +1,7 @@
 // =====================================================================================================
 // SOme sample API functions for the Flying Dutchman data base.
 // =====================================================================================================
-// Author: Lars Oestreicher, 2018
+// Author: Lars Oestreicher, 2018. extended by Agnes Sidemo, Anton Ohlsson, Casper Norrbin, Marion Wallsten, Theo Meier Ström 2021
 //
 // Adapted from a mySQL data base.
 //
@@ -120,9 +120,6 @@ function allBeveragesWithID() {
     // Using a local variable to collect the items.
     var collector = [];
 
-    // The DB is stored in the variable DB2, with "spirits" as key element. If you need to select only certain
-    // items, you may introduce filter functions in the loop... see the template within comments.
-    //
     for (i = 0; i < DB2.spirits.length; i++) {
         collector.push([DB2.spirits[i].artikelid, DB2.spirits[i].namn, DB2.spirits[i].prisinklmoms, DB2.spirits[i].varugrupp, DB2.spirits[i].stock]);
     };
@@ -282,6 +279,7 @@ function percentToNumber(percentStr) {
 function allMenuBeverages() {
     var collector = [];
 
+    // Add all beverages to the collector
     for (i = 0; i < DB2.spirits.length; i++) {
         collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
     };
@@ -300,7 +298,9 @@ function getOrder(table_id) {
     }
 }
 
-
+// =====================================================================================================
+// Returns the order lock for a specific table
+//
 function getOrderLock(table_id) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
@@ -309,6 +309,9 @@ function getOrderLock(table_id) {
     }
 }
 
+// =====================================================================================================
+// Sets the order lock for a specific table
+//
 function setOrderLock(table_id, order_lock) {
     for (i=0; i < DB.orders.length; i++) {
         if (parseInt(DB.orders[i].table) == parseInt(table_id)) {
@@ -354,7 +357,9 @@ function getSpiritInfoFromId(id) {
 //
 function getTypeFromId(id) {
     var all = allBeveragesWithID();
-    for (i=0; i < all.length; i++) {
+
+    // Finds the correct beverage
+    for (i = 0; i < all.length; i++) {
         if (parseInt(all[i][0]) == parseInt(id)) {
             return all[i][3];
         }
@@ -366,7 +371,9 @@ function getTypeFromId(id) {
 //
 function getNameFromId(id) {
     var all = allBeveragesWithID();
-    for (i=0; i < all.length; i++) {
+
+    // Finds the correct beverage
+    for (i = 0; i < all.length; i++) {
         if (parseInt(all[i][0]) == parseInt(id)) {
             return all[i][1];
         }
@@ -379,7 +386,9 @@ function getNameFromId(id) {
 //
 function getCostFromId(id) {
     var all = allBeveragesWithID();
-    for (i=0; i < all.length; i++) {
+
+    // Finds the correct beverage
+    for (i = 0; i < all.length; i++) {
         if (parseInt(all[i][0]) == parseInt(id)) {
             return all[i][2];
         }
@@ -392,7 +401,9 @@ function getCostFromId(id) {
 //
 function getIdFromName(name) {
     var all = allBeveragesWithID();
-    for (i=0; i < all.length; i++) {
+
+    // Finds the correct beverage
+    for (i = 0; i < all.length; i++) {
         if (all[i][1] === name) {
             return all[i][0];
         }
@@ -404,7 +415,9 @@ function getIdFromName(name) {
 //
 function getStockFromId(id) {
     var all = allBeveragesWithID();
-    for (i=0; i < all.length; i++) {
+
+    // Finds the correct beverage
+    for (i = 0; i < all.length; i++) {
         if (parseInt(all[i][0]) == parseInt(id)) {
             return all[i][4];
         }
@@ -417,6 +430,7 @@ function getStockFromId(id) {
 function allBeveragesOfType(type) {
     var collector = [];
 
+    // Adds the beverage to the collector if it is of the correct type
     for (i = 0; i < DB2.spirits.length; i++) {
         if(DB2.spirits[i].varugrupp.includes(type)) {
             collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
@@ -430,13 +444,17 @@ function allBeveragesOfType(type) {
 //
 function allBeveragesWithStrength(way, strength) {
     var collector = [];
+
+    // Filter for beverages above a certain strength
     if(way === "above") {
         for (i = 0; i < DB2.spirits.length; i++) {
-                if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
-                    collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
-                };
+            if (percentToNumber(DB2.spirits[i].alkoholhalt) > strength) {
+                collector.push([DB2.spirits[i].namn, DB2.spirits[i].artikelid, DB2.spirits[i].stock, DB2.spirits[i].prisinklmoms, DB2.spirits[i].hidden]);
             };
+        };
     }
+    
+    // Filter for beverages below a certain strength
     if(way === "below") {
         for (i = 0; i < DB2.spirits.length; i++) {
             if (percentToNumber(DB2.spirits[i].alkoholhalt) < strength) {
@@ -453,12 +471,14 @@ function allBeveragesWithStrength(way, strength) {
 function increaseBalance(userName, newAmount) {
     var userID;
 
+    // Find the ID corresponding to the username
     for (i = 0; i < DB.users.length; i++) {
         if (DB.users[i].username == userName) {
             userID = DB.users[i].user_id;
         };
     };
 
+    // Increase the balance of the correct user
     for (i = 0; i < DB.account.length; i++) {
         if (DB.account[i].user_id == userID) {
             DB.account[i].creditSEK = Number(DB.account[i].creditSEK) + Number(newAmount); 

@@ -374,7 +374,7 @@ function payVipLocker() {
       $('#userVipCodeInfo').append('<button class="sortButton" onClick=usersendOrder("console") >'+ get_string("done") + ' </button>');
       
       userVipCode.style.display = "block";
-      var span = document.getElementsByClassName("close")[0];
+      var span = document.getElementsByClassName("close")[1];
     
       span.onclick = function() {
         userVipCode.style.display = "none";

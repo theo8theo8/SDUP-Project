@@ -1,2 +1,12 @@
 # SDUP-Project
-The Flying Dutchman is a franchising group with a small local pub here in Downsala with an increasing number of recurring visitors. Since the pub has a tradition of providing a "family" feeling among its customers, the long queues at the bar desk have become slightly annoying if not to the customers, so at least to bar owners and staff.  It is also time to start modernizing the bar somewhat, still without changing the traditional air of the pub. One part is to support the bartender with a new ordering system, and the other is to use small touch screens distributed in the pub area, where the customers can select their beer of choice in their own pace. Also included are some ideas about providing certain special information about the beers, such as if they contain gluten or not.   During the planning of the new system, the bar owners suddenly had the (maybe not completely legal, but still) idea of having a set of VIP customers, who have a certain credit at the bar, and who can be trusted to handle their own serving of the beers from the VIP cooler (which is close to the bar disk). The idea started with Uncle Jordan, who is a very close friend of the pub owner, who already goes behind the bar and picks up his beer with a wave to the bartender.   So, the final idea behind the project is to build a system that will support the bartenders, allow the customers to choose the beer at the table but order and pay at the bar, and for VIP customers to also be able to order and pay a beer at the table through the system. 
+## Bakgrund
+The Flying Dutchman är en liten lokal upp i Downsala med en tradition av att tillhandahålla en familjekänsla mot sina kunder. Det är nu dags att modernisera baren, utan att ändra på den traditionella känslan som skapats under åren. Det nya systemet har funktionalitet som stödjer bartenders, möjligheten för kunder att beställa vid sitt bord och för VIP kunder att ha ett saldo för att kunna betala genom systemet.
+
+## Filer
+- `Clockify_Report.pdf` innehåller tidsrapport för utfört arbete.
+- `Deviations_and_assumptions` innehåller alla avvikelser och antagningar gjorda under projektet, tillsammans med ansvaret för alla i gruppen.
+- `index.html` är den enda html fil och innehåller alla vyer.
+- `/css` innehåller alla CSS filer som används.
+- `/fonts` innehåller extra font för hemsidan.
+- `/img` innehåller alla bilder som används.
+- `/js` innehåller alla JavaScript filer som används.

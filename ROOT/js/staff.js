@@ -142,6 +142,18 @@ function addTableDB(Xpos, Ypos, table_id) {
   var div = document.createElement('div');
   div.id = 'twoPtable';
   div.draggable = true;
+  
+  switch (getOrderLock(table_id)) {
+    case 1:
+      div.style.backgroundColor = "red";
+      break;
+    case 2:
+      div.style.backgroundColor = "yellow";
+      break;
+    default:
+      break;
+  }
+  
   setTranslate(Xpos, Ypos, div);
 
   var button = document.createElement('button');
@@ -280,6 +292,8 @@ function sendOrder(con) {
   setOrderLock(currentTableID, 0);
   showOrder(currentTableID);
   showMenu(lastMenu);
+  $('#bordskarta').empty();
+  loadAllTables();
   return;
 }
 
@@ -606,6 +620,8 @@ function updateBartenderView() {
   }
   showMenu(lastMenu);
   showAccountBox();
+  $('#bordskarta').empty();
+  loadAllTables();
 }
 
 // =====================================================================================================
